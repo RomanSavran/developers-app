@@ -1,0 +1,51 @@
+{
+    "name": "developers-app",
+    "private": false,
+    "description": "PoT developers portal app",
+    "version": "0.1.0",
+    "dependencies": {
+        "bootstrap": "4.3.1",
+        "gatsby": "2.3.4",
+        "gatsby-image": "2.0.20",
+        "gatsby-plugin-catch-links": "2.0.9",
+        "gatsby-plugin-google-analytics": "2.0.20",
+        "gatsby-plugin-manifest": "2.0.9",
+        "gatsby-plugin-offline": "2.0.16",
+        "gatsby-plugin-react-helmet": "3.0.2",
+        "gatsby-plugin-sharp": "2.0.32",
+        "gatsby-remark-embed-runkit": "1.0.1",
+        "gatsby-remark-images": "3.0.1",
+        "gatsby-source-filesystem": "2.0.28",
+        "gatsby-transformer-remark": "2.2.0",
+        "gatsby-transformer-sharp": "2.1.8",
+        "prop-types": "15.6.2",
+        "react": "16.6.3",
+        "react-bootstrap": "1.0.0-beta.6",
+        "react-dom": "16.6.3",
+        "react-helmet": "5.2.0",
+        "styled-components": "4.2.0"
+    },
+    "keywords": [
+        "gatsby"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "build": "node --stack-size=2048 --v8-pool-size=2048 node_modules/gatsby-cli/lib/index.js build",
+        "develop": "gatsby develop",
+        "start": "npm run develop",
+        "format": "prettier --write \"src/**/*.js\"",
+        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    },
+    "devDependencies": {
+        "eslint-config-react-app": "3.0.8",
+        "gatsby-cli": "2.5.2",
+        "prettier": "1.15.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    },
+    "bugs": {
+        "url": "https://github.com/gatsbyjs/gatsby/issues"
+    }
+}
