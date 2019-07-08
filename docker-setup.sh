@@ -43,10 +43,3 @@ chown -R www:www /var/www /var/log/nginx /var/lib/nginx/logs
 # Clean up files not needed in final container
 rm -rf /src/developers-app
 ls /src
-
-# Show in logs what we're publishing
-set +x
-
-cd /var/www
-echo "Ready to publish the following:"
-find .
