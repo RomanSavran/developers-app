@@ -41,5 +41,4 @@ cp -r . /var/www/developers-app
 chown -R www:www /var/www /var/log/nginx /var/lib/nginx/logs
 
 # Clean up files not needed in final container
-rm -rf /src/developers-app
-ls /src
+find . -type f ! -name 'Dockerfile' -delete
