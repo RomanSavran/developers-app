@@ -33,6 +33,9 @@ yarn run build
 cd /src/developers-app/public/
 cp -r . /var/www/developers-app
 
+# Copy cms admin
+cp -r /src/developers-app/cmsadmin /var/www/developers-app
+
 #
 # Finishing up
 #

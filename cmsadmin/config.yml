@@ -1,0 +1,109 @@
+backend:
+  name: "github"
+  repo: "$WEBSITE_REPO"
+  branch: "master"
+  base_url: "$WEBSITE_ROOT"
+  auth_endpoint: "$AUTH_ENDPOINT"
+publish_mode: "editorial_workflow"
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+media_library:
+  name: "cloudinary"
+collections:
+  - name: "developer-blog"
+    label: "Developer Blog"
+    folder: "gatsby/src/pages/developer-blogs/"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Type", name: "type", widget: "hidden", default: "developerblog"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "main-blog"
+    label: "Main Blog"
+    folder: "gatsby/src/pages/main-blogs/"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+       - {label: "Title", name: "title", widget: "string",required: true}
+       - {label: "Path", name: "path", widget: "string",required: true}
+       - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+       - {label: "Type", name: "type", widget: "hidden", default: "blog", required: true}
+       - {label: "Publish Date", name: "date", widget: "datetime"}
+       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "developer-frontpage"
+    label: "Developer Frontpage -blocks"
+    folder: "gatsby/src/pages/developer-frontpage/"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "developer-apis"
+    label: "Developer APIs pages"
+    folder: "gatsby/src/pages/developer-apis/"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Section", name: "section", widget: "hidden", default: "section"}
+      - {label: "Type", name: "type", widget: "hidden", default: "content"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "md-pages"
+    label: "Single pages"
+    folder: "gatsby/src/pages/md-pages/"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Section", name: "section", widget: "hidden", default: "page"}
+      - {label: "Type", name: "type", widget: "hidden", default: "page"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "use-cases"
+    label: "Use cases"
+    folder: "gatsby/src/pages/use-cases"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Type", name: "type", widget: "hidden", default: "usecase"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "plans"
+    label: "Plans"
+    folder: "gatsby/src/pages/plans"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Type", name: "type", widget: "hidden", default: "plan"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "events"
+    label: "Events"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    folder: "gatsby/src/pages/events"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Language", name: "language", widget: "string", default: "en/fi", required: true}
+      - {label: "Address", name: "address", widget: "string", required: true}
+      - {label: "Event date", name: "eventdate", widget: "string", required: true}
+      - {label: "Event start time", name: "eventstarttime", widget: "string", required: true}
+      - {label: "Event end time", name: "eventendtime", widget: "string", required: true}
+      - {label: "Registration url", name: "Registration url", widget: "string", required: true}
+      - {label: "Path", name: "path", widget: "string", required: true}
+      - {label: "Type", name: "type", widget: "hidden", default: "event"}
+      - {label: "Body", name: "body", widget: "markdown"}
