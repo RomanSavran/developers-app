@@ -663,6 +663,41 @@ body {
     }
 }
 
+#___gatsby .page-footer {
+  clip-path: url("#clipPathSVG");
+}
+@media (max-width: 1214px) {
+  #___gatsby .page-footer .footer-logo {
+    width: 80%;
+  }
+  #___gatsby .page-footer .footer-logo img.logo__footer {
+    margin: -1rem 0 -1rem -3rem;
+  }
+  #___gatsby .page-footer .footer-contact {
+    width: 80%;
+    text-align: left;
+    padding: 0 0 2rem 2rem;
+  }
+}
+@media (max-width: 767px) {
+  #___gatsby .page-footer .footer-somelinks {
+    position: absolute;
+    width: 20%;
+    right: 0;
+  }
+  #___gatsby .page-footer nav.some-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 1214px) {
+  #___gatsby .page-footer .footer-logo {
+    margin-top: -1rem;
+  }
+}
+
 #___gatsby footer,
 #___gatsby .page-content footer {
     max-width: 1200px;

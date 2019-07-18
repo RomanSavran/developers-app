@@ -258,7 +258,6 @@ body {
     word-wrap: break-word;
     font-kerning: normal;
     -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
@@ -468,10 +467,6 @@ pre {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
     margin-bottom: 1.45rem;
     font-size: 0.85rem;
     line-height: 1.42;
@@ -674,7 +669,6 @@ th {
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
     font-feature-settings: 'tnum';
     -moz-font-feature-settings: 'tnum';
-    -ms-font-feature-settings: 'tnum';
     -webkit-font-feature-settings: 'tnum';
     padding-left: 0.96667rem;
     padding-right: 0.96667rem;
