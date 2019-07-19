@@ -12,4 +12,9 @@ fi
 
 sed -i 's+$DEVELOPERS_HOST+'"${DEVELOPERS_HOST}"'+g' /etc/nginx/sites/*.conf
 
+# Replace ENV variables in netlify config files
+sed -i 's+$WEBSITE_ROOT+'"${WEBSITE_ROOT}"'+g' /var/www/developers-site/cmsadmin/config.yml
+sed -i 's+$WEBSITE_REPO+'"${WEBSITE_REPO}"'+g' /var/www/developers-site/cmsadmin/config.yml
+sed -i 's+$AUTH_ENDPOINT+'"${AUTH_ENDPOINT}"'+g' /var/www/developers-site/cmsadmin/config.yml
+
 nginx -c /etc/nginx/nginx.conf -g "daemon off;"
