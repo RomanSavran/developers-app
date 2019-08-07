@@ -12,6 +12,10 @@ The environment should be used for test data only, but will run the same version
 
 For things to keep in mind when working with sandbox is that we do NOT guarantee that the data in the database stays intact, and instead we guarantee that it will be regularly reset and your data WILL be lost.
 
+## SLA
+
+At this point of offer Best-effort SLA. Normally all goes well but occasional hickups might occur. During 2019 we will publish  statuspage for the platform services including exposed public APIs. With that service you can check the health of our services every day when ever needed. 
+
 ## Sample data and integrations 
 
 For your own integrations to the sandbox environment it is recommended that you also use purely test data with no sensitive information, as other people also use the environment and your data might be viewed by other people as well. This is especially important in case of data products, as during development your access control checks etc. might not be fully complete.
