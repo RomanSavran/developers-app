@@ -284,7 +284,7 @@ const IndexPage = ({ data }) => {
                                 Our daily communication is based on Slack and
                                 mailing list. Subscribe now and stay informed!
                             </p>
-                            <a href="https://www.platformoftrust.net/set-subscription">
+                            <a href="https://www.platformoftrust.net/newsletter/">
                                 Subscribe{' '}
                             </a>
                         </div>
