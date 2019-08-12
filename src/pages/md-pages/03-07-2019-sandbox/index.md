@@ -8,6 +8,16 @@ The Platform of Trust Sandbox environment is intended to be used by developers t
 
 The environment should be used for test data only, but will run the same version of the software as production.
 
+## SLA
+
+SLA for all the services needed by sandbox is now `best effort`. Aim is to provide 99% uptime early next year. 
+
+By default sandbox APIs will respond 99% of the call in under 250ms. Aim is to have 100ms response time early next year.  There are currently a few exceptions: 
+
+- Product API average response time is 1000ms.  Aim is to have 250ms response time early next year. 
+- Broker API is using 3rd party solutions and thus we can not completely guarantee respose time. 
+
+
 ## Periodic environment reset
 
 For things to keep in mind when working with sandbox is that we do NOT guarantee that the data in the database stays intact, and instead we guarantee that it will be regularly reset and your data WILL be lost.
