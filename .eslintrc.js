@@ -4,6 +4,11 @@ module.exports = {
         'es6': true,
         'jest': true
     },
+    "globals": {
+        "module": "readonly",
+        "__dirname": "readonly",
+        "exports": "readonly"
+    },
     'extends': ['eslint:recommended', 'plugin:react/recommended'],
     'settings': {
         'react': {

@@ -36,10 +36,10 @@
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
         "check": "npm run prettier && npm run eslint && echo \"Success! Everything is clear!\"",
-        "prettier": "prettier --check \"src/**/*.js\"",
-        "prettier:fix": "prettier --write \"src/**/*.js\"",
-        "eslint": "eslint src",
-        "eslint:fix": "eslint src --fix"
+        "prettier": "prettier --check \"src/**/*.js\" *.js",
+        "prettier:fix": "prettier --write \"src/**/*.js\" *.js",
+        "eslint": "eslint src .",
+        "eslint:fix": "eslint --fix . src"
     },
     "devDependencies": {
         "eslint-config-react-app": "3.0.8",
