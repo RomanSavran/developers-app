@@ -88,7 +88,7 @@ export default function Template({ data }) {
         <Layout>
             <SEO
                 title={`${post.frontmatter.title}`}
-                keywords={[`Platform of trust`, `developers`, 'api']}
+                keywords={['Platform of trust', 'developers', 'api']}
             />
             <StyledApiProfile>
                 <StyledApiHeader>

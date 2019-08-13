@@ -8,7 +8,7 @@ const ApisPage = ({ data }) => {
     console.log(data);
     return (
         <Layout>
-            <SEO title="API's" keywords={[`Platform of Trust`, `APIs`]} />
+            <SEO title="API's" keywords={['Platform of Trust', 'APIs']} />
             <section className="APIs page-content">
                 <main className="container">
                     <section className="intro container">

@@ -11,7 +11,7 @@ export default function Template({ data }) {
         <Layout>
             <SEO
                 title={`${post.frontmatter.title}`}
-                keywords={[`Platform of trust`, `developers`, 'blogs']}
+                keywords={['Platform of trust', 'developers', 'blogs']}
             />
             <main className="page-content container dark-bg">
                 <article className="blog-post-container">

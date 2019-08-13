@@ -9,7 +9,7 @@ class Tietosuojaseloste extends React.Component {
             <Layout>
                 <SEO
                     title="Platform of Trust Developers"
-                    keywords={[`Platform of trust`, `developers`]}
+                    keywords={['Platform of trust', 'developers']}
                 />
                 <section className="page-content">
                     <main className="main container">

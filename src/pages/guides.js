@@ -17,7 +17,7 @@ export default function Guides({ data }) {
         <Layout className="container">
             <SEO
                 title="Guides"
-                keywords={[`Platform of trust`, `developers`, 'guides']}
+                keywords={['Platform of trust', 'developers', 'guides']}
             />
             <main className="page-content container dark-bg">
                 <section className="intro row">

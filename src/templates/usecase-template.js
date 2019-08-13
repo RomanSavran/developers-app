@@ -11,7 +11,7 @@ export default function Template({ data }) {
         <Layout>
             <SEO
                 title={`${post.frontmatter.title}`}
-                keywords={[`Platform of trust`, `developers`, 'use-cases']}
+                keywords={['Platform of trust', 'developers', 'use-cases']}
             />
             <article className="usecase-container">
                 <div className="usecase">

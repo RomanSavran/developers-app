@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
         <Layout>
             <SEO
                 title="Developer Portal"
-                keywords={[`Platform of trust`, `developers`]}
+                keywords={['Platform of trust', 'developers']}
             />
             <section className="Home page-content">
                 <main className="main container">

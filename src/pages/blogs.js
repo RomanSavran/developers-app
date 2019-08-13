@@ -17,7 +17,7 @@ export default function Blogs({ data }) {
         <Layout className="container">
             <SEO
                 title="Blogs"
-                keywords={[`Platform of trust`, `developers`, 'blogs']}
+                keywords={['Platform of trust', 'developers', 'blogs']}
             />
             <main className="page-content container dark-bg">
                 <section className="intro row">

@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 const DeveloperPage = () => {
     return (
         <Layout>
-            <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+            <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
             <section className="Home fullwidth page-content">
                 <div className="jumbotron jumbotron-fluid">
                     <div className="container">

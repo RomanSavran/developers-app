@@ -33,13 +33,18 @@
         "build": "node --stack-size=2048 --v8-pool-size=2048 node_modules/gatsby-cli/lib/index.js build",
         "develop": "gatsby develop",
         "start": "npm run develop",
-        "format": "prettier --write \"src/**/*.js\"",
-        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+        "clean": "gatsby clean",
+        "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+        "check": "npm run prettier && npm run eslint",
+        "prettier": "prettier --check \"src/**/*.js\"",
+        "prettier:fix": "prettier --write \"src/**/*.js\"",
+        "eslint": "eslint src",
+        "eslint:fix": "eslint src --fix"
     },
     "devDependencies": {
         "eslint-config-react-app": "3.0.8",
         "gatsby-cli": "2.5.2",
-        "prettier": "1.15.2"
+        "prettier": "1.18.2"
     },
     "repository": {
         "type": "git",
