@@ -35,7 +35,7 @@
         "start": "npm run develop",
         "clean": "gatsby clean",
         "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-        "check": "npm run prettier && npm run eslint",
+        "check": "npm run prettier && npm run eslint && echo \"Success! Everything is clear!\"",
         "prettier": "prettier --check \"src/**/*.js\"",
         "prettier:fix": "prettier --write \"src/**/*.js\"",
         "eslint": "eslint src",

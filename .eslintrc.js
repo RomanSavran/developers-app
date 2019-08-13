@@ -27,7 +27,9 @@ module.exports = {
     ],
     'rules': {
         // Disable this rule because prettier will cover it
-        'indent': "off",
+        'indent': 'off',
+        'prefer-arrow-callback': ['error'],
+        'func-style': ['error', 'expression', { allowArrowFunctions: true }],
         'space-infix-ops': ['error'],
         'key-spacing': ['error'],
         'react/jsx-indent': ['error', 4],

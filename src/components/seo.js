@@ -24,7 +24,7 @@ import mstile150 from '../images/mstile-150x150.png';
 import mstile310 from '../images/mstile-310x310.png';
 import mstile310x150 from '../images/mstile-310x150.png';
 
-function SEO({ description, lang, meta, keywords, title }) {
+const SEO = ({ description, lang, meta, keywords, title }) => {
     return (
         <StaticQuery
             query={detailsQuery}
@@ -191,7 +191,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             }}
         />
     );
-}
+};
 
 SEO.defaultProps = {
     lang: 'en',
