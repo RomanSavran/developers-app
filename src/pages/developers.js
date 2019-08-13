@@ -45,7 +45,7 @@ const DeveloperPage = () => {
                                 </div>
                                 <div className="card-footer">
                                     <Link to="/getstarted/data-products">
-                                        Learn more >>{' '}
+                                        {'Learn more >>'}
                                     </Link>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ const DeveloperPage = () => {
                                 </div>
                                 <div className="card-footer">
                                     <Link to="/getstarted/build-apps">
-                                        Learn more >>{' '}
+                                        {'Learn more >>'}
                                     </Link>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const DeveloperPage = () => {
                                 </div>
                                 <div className="card-footer">
                                     <Link to="/getstarted/data-models">
-                                        Learn more >>{' '}
+                                        {'Learn more >>'}
                                     </Link>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ const DeveloperPage = () => {
                                 </div>
                                 <div className="card-footer">
                                     <Link to="/getstarted/data-products">
-                                        Learn more >>{' '}
+                                        {'Learn more >>'}
                                     </Link>
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ const DeveloperPage = () => {
                                 </div>
                                 <div className="card-footer">
                                     <Link to="/getstarted/sandbox">
-                                        Learn more >>{' '}
+                                        {'Learn more >>'}
                                     </Link>
                                 </div>
                             </div>
@@ -138,9 +138,9 @@ const DeveloperPage = () => {
                             minutes
                         </h2>
                         <p>
-                            Try out the most commonly used APIs instantly. Just
+                            {`Try out the most commonly used APIs instantly. Just
                             select API, preferred code example and hit "run".
-                            The response with headers is printed below.
+                            The response with headers is printed below.`}
                         </p>
                         <div className="container row">
                             <div className="col-md-6">
@@ -163,12 +163,12 @@ const DeveloperPage = () => {
                                             <br />
                                             <span className="na"> rel=</span>
                                             <span className="s">
-                                                "stylesheet"
+                                                {'"stylesheet"'}
                                             </span>
                                             <span className="na"> href=</span>
                                             <br />
                                             <span className="s">
-                                                "https://foo.com.min.css"
+                                                {'"https://foo.com.min.css"'}
                                             </span>
                                             <span className="nt">&gt;</span>
                                         </code>
@@ -186,7 +186,9 @@ const DeveloperPage = () => {
                                     Product API
                                 </button>
                                 <Link to="../developers/apis">
-                                    Read more about APIs and tools available >>{' '}
+                                    {
+                                        'Read more about APIs and tools available >>'
+                                    }
                                 </Link>
                             </div>
                         </div>
@@ -242,7 +244,7 @@ const DeveloperPage = () => {
                                     </div>
                                     <div className="card-footer">
                                         <Link to="/use-cases/data-product">
-                                            Learn more >>{' '}
+                                            {'Learn more >>'}
                                         </Link>
                                     </div>
                                 </div>
@@ -261,7 +263,7 @@ const DeveloperPage = () => {
                                     </div>
                                     <div className="card-footer">
                                         <Link to="/use-cases/build-application">
-                                            Learn more >>{' '}
+                                            {'Learn more >>'}
                                         </Link>
                                     </div>
                                 </div>
@@ -275,7 +277,7 @@ const DeveloperPage = () => {
                             mailing list. Subscibe now and stay informed!
                         </p>
                         <a href="https://www.platformoftrust.net/set-subscription">
-                            Subscribe >>{' '}
+                            {'Subscribe >>'}
                         </a>
                     </section>
                     <section className="container">

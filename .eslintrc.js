@@ -26,17 +26,11 @@ module.exports = {
         'react'
     ],
     'rules': {
+        // Disable this rule because prettier will cover it
+        'indent': "off",
         'space-infix-ops': ['error'],
         'key-spacing': ['error'],
         'react/jsx-indent': ['error', 4],
-        'indent': [
-            'error',
-            4,
-            {
-                'SwitchCase': 1,
-                'ignoredNodes': ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild']
-            }
-        ],
         'linebreak-style': [
             'error',
             'unix'

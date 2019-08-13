@@ -1,6 +1,8 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import { graphql } from 'gatsby';
+import Link from 'gatsby-link';
+import PropTypes from 'prop-types';
+
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import HexPic from '../images/radio-1948002.jpg';
@@ -11,7 +13,7 @@ const styles = {
     }
 };
 
-export default function Blogs({ data }) {
+const Blogs = ({ data }) => {
     const { edges: posts } = data.allMarkdownRemark;
     return (
         <Layout className="container">
@@ -81,7 +83,8 @@ export default function Blogs({ data }) {
             </main>
         </Layout>
     );
-}
+};
+
 export const pageQuery = graphql`
     query IndexQuery {
         allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
@@ -100,3 +103,13 @@ export const pageQuery = graphql`
         }
     }
 `;
+
+Blogs.propTypes = {
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired
+    }).isRequired
+};
+
+export default Blogs;

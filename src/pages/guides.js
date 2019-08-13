@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import { graphql } from 'gatsby';
+
+import PropTypes from 'prop-types';
+
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import HexPic from '../images/oslo-698674.jpg';
@@ -11,7 +14,7 @@ const styles = {
     }
 };
 
-export default function Guides({ data }) {
+const Guides = ({ data }) => {
     const { edges: posts } = data.allMarkdownRemark;
     return (
         <Layout className="container">
@@ -81,7 +84,8 @@ export default function Guides({ data }) {
             </main>
         </Layout>
     );
-}
+};
+
 export const pageQueryGuides = graphql`
     query IndexQueryGuides {
         allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
@@ -100,3 +104,13 @@ export const pageQueryGuides = graphql`
         }
     }
 `;
+
+Guides.propTypes = {
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired
+    }).isRequired
+};
+
+export default Guides;
