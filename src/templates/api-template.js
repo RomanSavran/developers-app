@@ -1,8 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import SEO from '../components/seo';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
+import SEO from '../components/seo';
 import Layout from '../components/layout';
 
 const tempBreakpoint = '820px';
@@ -82,13 +83,13 @@ const StyledMain = styled.main`
     }
 `;
 
-export default function Template({ data }) {
+const Template = ({ data }) => {
     const post = data.markdownRemark;
     return (
         <Layout>
             <SEO
                 title={`${post.frontmatter.title}`}
-                keywords={[`Platform of trust`, `developers`, 'api']}
+                keywords={['Platform of trust', 'developers', 'api']}
             />
             <StyledApiProfile>
                 <StyledApiHeader>
@@ -132,7 +133,7 @@ export default function Template({ data }) {
             </StyledApiProfile>
         </Layout>
     );
-}
+};
 
 export const pageQuery = graphql`
     query apis($path: String!) {
@@ -162,3 +163,21 @@ export const pageQuery = graphql`
         }
     }
 `;
+
+Template.propTypes = {
+    data: PropTypes.shape({
+        markdownRemark: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                uptime: PropTypes.string,
+                version: PropTypes.string,
+                modified: PropTypes.string,
+                runkit: PropTypes.string,
+                documentation: PropTypes.string
+            }).isRequired,
+            html: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired
+};
+
+export default Template;

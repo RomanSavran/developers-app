@@ -4,17 +4,19 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+import PropTypes from 'prop-types';
+
 import EndToEnd from '../images/end-to-end-dx.png';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../styles/global.css';
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
     return (
         <Layout>
             <SEO
                 title="Developer Portal"
-                keywords={[`Platform of trust`, `developers`]}
+                keywords={['Platform of trust', 'developers']}
             />
             <section className="Home page-content">
                 <main className="main container">
@@ -56,8 +58,8 @@ const IndexPage = ({ data }) => {
                                 alt="End-to-end user experience illustration"
                             />
                             <p>
-                                From below you'll find getting started guides
-                                for the processes.{' '}
+                                {`From below you'll find getting started guides
+                                for the processes.`}
                             </p>
                         </div>
                     </section>
@@ -293,6 +295,14 @@ const IndexPage = ({ data }) => {
             </section>
         </Layout>
     );
+};
+
+IndexPage.propTypes = {
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired
+    }).isRequired
 };
 
 export default IndexPage;

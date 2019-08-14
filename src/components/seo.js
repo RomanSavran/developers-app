@@ -24,7 +24,7 @@ import mstile150 from '../images/mstile-150x150.png';
 import mstile310 from '../images/mstile-310x310.png';
 import mstile310x150 from '../images/mstile-310x150.png';
 
-function SEO({ description, lang, meta, keywords, title }) {
+const SEO = ({ description, lang, meta, keywords, title }) => {
     return (
         <StaticQuery
             query={detailsQuery}
@@ -121,67 +121,67 @@ function SEO({ description, lang, meta, keywords, title }) {
                         ]}
                         meta={[
                             {
-                                name: `description`,
+                                name: 'description',
                                 content: metaDescription
                             },
                             {
-                                property: `og:title`,
+                                property: 'og:title',
                                 content: title
                             },
                             {
-                                property: `og:description`,
+                                property: 'og:description',
                                 content: metaDescription
                             },
                             {
-                                property: `og:type`,
-                                content: `website`
+                                property: 'og:type',
+                                content: 'website'
                             },
                             {
-                                name: `twitter:card`,
-                                content: `summary`
+                                name: 'twitter:card',
+                                content: 'summary'
                             },
                             {
-                                name: `twitter:creator`,
+                                name: 'twitter:creator',
                                 content: data.site.siteMetadata.author
                             },
                             {
-                                name: `twitter:title`,
+                                name: 'twitter:title',
                                 content: title
                             },
                             {
-                                name: `twitter:description`,
+                                name: 'twitter:description',
                                 content: metaDescription
                             },
                             {
-                                name: `msapplication-TileColor`,
+                                name: 'msapplication-TileColor',
                                 content: '#ffffff'
                             },
                             {
-                                name: `msapplication-TileImage`,
+                                name: 'msapplication-TileImage',
                                 content: `${mstile144}`
                             },
                             {
-                                name: `msapplication-square70x70logo`,
+                                name: 'msapplication-square70x70logo',
                                 content: `${mstile70}`
                             },
                             {
-                                name: `msapplication-square150x150logo`,
+                                name: 'msapplication-square150x150logo',
                                 content: `${mstile150}`
                             },
                             {
-                                name: `msapplication-wide310x150logo`,
+                                name: 'msapplication-wide310x150logo',
                                 content: `${mstile310x150}`
                             },
                             {
-                                name: `msapplication-square310x310logo`,
+                                name: 'msapplication-square310x310logo',
                                 content: `${mstile310}`
                             }
                         ]
                             .concat(
                                 keywords.length > 0
                                     ? {
-                                          name: `keywords`,
-                                          content: keywords.join(`, `)
+                                          name: 'keywords',
+                                          content: keywords.join(', ')
                                       }
                                     : []
                             )
@@ -191,10 +191,10 @@ function SEO({ description, lang, meta, keywords, title }) {
             }}
         />
     );
-}
+};
 
 SEO.defaultProps = {
-    lang: `en`,
+    lang: 'en',
     meta: [],
     keywords: []
 };
