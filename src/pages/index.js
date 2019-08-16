@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 import EndToEnd from '../images/end-to-end-dx.png';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/global.css';
+import '../styles/global.scss';
 
 const IndexPage = () => {
     return (

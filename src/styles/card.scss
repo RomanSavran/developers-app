@@ -1,0 +1,64 @@
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    .card {
+        display: flex;
+        width: 100%;
+        border-width: 8px;
+        border-style: solid;
+        border-color: #7955ff;
+        margin: 1rem;
+        background-color: #9176fe;
+        border-radius: 0;
+
+        * {
+            color: #f0f0f0;
+        }
+
+        .card-header {
+            border-width: 0;
+            background-color: #7955ff;
+            border-radius: 0;
+        }
+
+        .card-body {
+            border-width: 0;
+            background-color: #f0f0f0;
+            border-radius: 0;
+            color: #372873;
+
+            *,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p {
+                color: #372873;
+            }
+        }
+
+        .card-footer {
+            padding-top: 1em;
+            padding-bottom: 1em;
+            border-width: 0;
+            border-radius: 0;
+        }
+
+        a:link {
+            color: #141414;
+        }
+
+        a:visited {
+            color: #2c2c2c;
+        }
+
+        a:hover {
+            color: #2c2c2c;
+        }
+
+        a:active {
+            color: #434343;
+        }
+    }
+}
