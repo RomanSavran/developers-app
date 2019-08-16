@@ -26,10 +26,10 @@
         "react-dom": "16.6.3",
         "react-helmet": "5.2.0",
         "styled-components": "4.2.0",
-        "stylelint": "^10.1.0",
-        "stylelint-config-idiomatic-order": "^7.0.3",
-        "stylelint-order": "^3.0.1",
-        "stylelint-scss": "^3.9.3"
+        "stylelint": "10.1.0",
+        "stylelint-config-idiomatic-order": "7.0.3",
+        "stylelint-order": "3.0.1",
+        "stylelint-scss": "3.9.3"
     },
     "keywords": [
         "gatsby"
