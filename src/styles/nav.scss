@@ -1,0 +1,30 @@
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    nav a:link,
+    nav a:visited {
+        text-decoration: none;
+    }
+
+    nav.apps a {
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .navbar-collapse .activedropdown {
+        position: relative;
+
+        a:link {
+            display: inline-block;
+        }
+
+        .dropdown-menu.show {
+            top: 2rem;
+            background-color: #a897fe;
+
+            ul {
+                margin-left: 0.4rem;
+                list-style: none;
+            }
+        }
+    }
+}

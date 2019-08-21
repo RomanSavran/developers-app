@@ -1,0 +1,65 @@
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    .page-content {
+        width: auto;
+        max-width: 960px;
+        min-height: 55vh;
+        padding: 2rem;
+        margin: 0 auto;
+        background-color: #f0f0f0;
+
+        header {
+            width: auto;
+            max-width: 960px;
+            padding: 2rem;
+            margin: 0 auto;
+        }
+
+        //
+
+        * {
+            color: #141414;
+        }
+
+        h1 {
+            color: #7955ff;
+        }
+
+        a:link {
+            color: #7955ff;
+        }
+
+        a:visited {
+            color: #583eb9;
+        }
+
+        a:hover {
+            color: #583eb9;
+        }
+
+        a:active {
+            color: #583eb9;
+        }
+
+        &.dark-bg {
+            background-color: rgba(55, 40, 115, 0.8);
+
+            *,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            a:link,
+            a:visited {
+                color: #f0f0f0;
+            }
+        }
+    }
+
+    .page-footer {
+        clip-path: url("#clipPathSVG");
+    }
+}

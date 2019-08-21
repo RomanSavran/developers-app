@@ -4,12 +4,10 @@ import { Link } from 'gatsby';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-import PropTypes from 'prop-types';
-
 import EndToEnd from '../images/end-to-end-dx.png';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/global.css';
+import '../styles/global.scss';
 
 const IndexPage = () => {
     return (
@@ -297,12 +295,6 @@ const IndexPage = () => {
     );
 };
 
-IndexPage.propTypes = {
-    data: PropTypes.shape({
-        allMarkdownRemark: PropTypes.shape({
-            edges: PropTypes.array.isRequired
-        }).isRequired
-    }).isRequired
-};
+IndexPage.propTypes = {};
 
 export default IndexPage;

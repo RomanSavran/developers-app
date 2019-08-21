@@ -1,0 +1,43 @@
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    footer {
+        max-width: 1200px;
+        padding: 0;
+        margin: 0 auto;
+        background-color: #372873;
+        background-color: rgba(55, 40, 115, 0.6);
+
+        p {
+            color: #f0f0f0;
+        }
+
+        .sitemap ul {
+            padding-left: 0;
+            margin-left: 0;
+
+            li {
+                padding: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        .nav-link {
+            padding: 0.2em 0;
+            margin: 0;
+        }
+
+        a.some-link {
+            display: inline-block;
+            width: 32px;
+            margin-right: 0.4rem;
+
+            img {
+                margin-bottom: 0.4rem;
+            }
+
+            .some-icon {
+                width: 100%;
+            }
+        }
+    }
+}

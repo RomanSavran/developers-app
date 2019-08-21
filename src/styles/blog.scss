@@ -1,0 +1,19 @@
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    .blog-post-preview,
+    .blog-post-content {
+        color: #fff;
+    }
+
+    .blog-post {
+        .gatsby-image-wrapper,
+        picture {
+            margin: 2rem 0;
+        }
+    }
+
+    .blog-post-preview {
+        padding: 2rem 0;
+        border-bottom: 2px dotted #f0f0f0;
+    }
+}
