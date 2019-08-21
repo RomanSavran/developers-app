@@ -6,6 +6,9 @@
 @import "card.scss";
 @import "nav.scss";
 
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~react-elements-of-trust/dist/scss/main.scss';
+
 html {
     box-sizing: border-box;
     font-size: 100%;
