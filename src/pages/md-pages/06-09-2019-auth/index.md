@@ -66,7 +66,7 @@ Content-Length: 232
 ```
 
 
-### Authorize application:
+### Authorize application
 
 If you try to log in right now, you will not be able to do so, and get this error:
 
@@ -101,6 +101,7 @@ HTTP/1.0 200 OK
 ```
 
 ## Authorization
+
 ### Send authorization request
 
 Now we are ready to log in using our newly created user's credentials. Let's send authorize request: 
@@ -162,7 +163,7 @@ Authorization	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZ
 ```
  
 
-#### Troubleshooting:
+#### Troubleshooting
 
 If the user you are logging in has not authorized oauth application as we discussed in step 2.2. You will get the following error:
 
