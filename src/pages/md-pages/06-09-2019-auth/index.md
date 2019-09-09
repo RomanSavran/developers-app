@@ -126,9 +126,6 @@ curl --request POST \
 Optional:
 
 `state` - An optional state for the request, could be a CSRF token.
-:
-
-`state` - An optional state for the request, could be a CSRF token.
 
 Response:
  
