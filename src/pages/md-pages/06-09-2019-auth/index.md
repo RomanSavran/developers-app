@@ -20,8 +20,6 @@ This guide is meant for developers who has just started working with Platform Of
     2. Obtain authorization token
 4. Test authorization token
 5. Web UI
-6. Authorization token
- 
 
 ## Authorization tokens
 
