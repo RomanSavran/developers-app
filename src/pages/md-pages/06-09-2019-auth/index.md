@@ -23,7 +23,7 @@ This guide is meant for developers who has just started working with Platform Of
 
 ## Authorization tokens
 
-Authorization tokens are one of the most essential and useful tokens you would need to communicate with PoT and use its functionality. The only way to get `Authrozation token` is to authorize to PoT as a user. This kind of token will last for 24 hours since you authorized. You can have at maximum N number of tokens at the same time (?). You need to have different tokens depends on a environment you are using (sandbox or production). 
+Authorization tokens are one of the most essential and useful tokens you would need to communicate with PoT and use its functionality. The only way to get `Authrozation token` is to authorize to PoT as a user. This kind of token will last for 24 hours since you authorized. You can have at maximum N number of tokens at the same time (?). You need to have different tokens depends on environment you are using (sandbox or production). 
  
  
 ## Register a new user
