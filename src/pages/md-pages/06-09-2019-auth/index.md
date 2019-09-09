@@ -148,14 +148,14 @@ Here you can copy `redirectUrl` to your browser and hit enter. In chrome develop
 
 , as well as `expiration`, right now it is set to `24 hours`. 
 
-Alternatively to copying `redirectUrl` into your browser, you can continue with CURL command:
+Alternatively to copying `redirectUrl` into your browser, you can continue with cURL command:
 
 ```
 curl -c - --request GET \
   --url '<INSERT_REDIRECT_URL_FROM_PREVIOUS_STEP>'
 ```
  
- Notice we use `-c` option with curl to print Cookies into our terminal. Response should contain `Authorization` token:
+ Notice we use `-c` option with cURL to print Cookies into our terminal. Response should contain `Authorization` token:
  
 ```
 Authorization	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZXhwIjoxNTY4MTIwMDAwLCJzdWIiOiIzMzIzNzA2Ny1lNzJjLTRmMjYtYjc4Yi05ZjllMjM0YjJlN2QiLCJhdWQiOiJmNzczZGFmZS0yMGMwLTRhMjUtYWEzZS05ZGEwYjgxYjkzMDQiLCJ0eXBlIjoiVXNlciIsImlzcyI6IkxFIiwiaWF0IjoxNTY4MDMzNjAwLjAsInNjb3BlcyI6IiJ9.b_gMNIKODrLzfooYadqI2VJGTuc7c26x8S7OncpyXA6XtZP_E3rlI9H5ot84zQS9SqHdLk23JxKdCiQCtbTpYcLn8QcUlF7mWweQmq1ewanHPHhfSb6uileQNQKGnGEVe3V4a8Hy2x_d8rOYujwFA2sfxfcEZdArAnfK_IIHfWzC5zz78c3nrT5LeqE1BP1RHzpLKkc91rcLcwa0ldKTDQlGDdi6hBYneaMGToqF3yTQxd1v_4YHLGp3i4A_TZu8wrBMoWFvJburYp45itsyElatNSwFMkNz6L7w6sxDQWTB9MznUuhk90U6bD49GljhY-Ny0XgwEzzUHeyj8oJHbkxfrJHpDHl-uNBQyPohwVwyaDdh6BDFJgM3JHOlezJuH_RbMCcUa1XqwkGhZwdXYNP7fgpTkEDY41_oRwsrPx9jM9jlvG9VBTEPFijATy-IV-tXH0VJ4pLO0fJ1IgAuUMnQJOxgnUPSuI2g_zhMLojgDMJUo1kONAWdoc7UwLMeR33ALlohLBdfnm0-thLTR3GOpuXgWC5Nx067Fy4ydwTpObrDu2LnliRFNvE2fQOXOrQKAz_BmOonL7xc2jFv5w0L9MSDfZcLzJYrMk2MF5E_fNOSiw8qW82U5a6E42FkxogN1o85AApGxvUWkdfG4MjOlGrgqW1QhdEsJLNGV2Y"
