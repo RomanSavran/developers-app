@@ -208,7 +208,7 @@ HTTP/1.0 403 Forbidden
 ```
 
 ```
-{"error": {"status": 403, "message": "Permission denied"}}%
+{"error": {"status": 403, "message": "Permission denied"}}
 ```
  
 Let's now send the same request with `Authorization token` we received in previous steps.
@@ -240,4 +240,4 @@ Now you can use PoT APIs that require `Authorization token`. Those usually are t
 
 ## Web UI
 
-You can do all the same steps above using web application. You need to go to `https://world-sandbox.oftrust.net/` and simply follow authorization flow.
+You can do all the same steps above using web application. You need to go to [My World App](https://world-sandbox.oftrust.net/) and simply follow authorization flow.
