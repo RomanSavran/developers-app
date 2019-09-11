@@ -23,14 +23,14 @@ This guide is meant for developers who has just started working with Platform Of
 
 ## Authorization tokens
 
-Authorization tokens are one of the most essential and useful tokens you would need to communicate with PoT and use its functionality. The only way to get `Authrozation token` is to authorize to PoT as a user. This kind of token will last for 24 hours since you authorized. You can have at maximum N number of tokens at the same time (?). You need to have different tokens depends on environment you are using (sandbox or production). 
+Authorization tokens are one of the most essential and useful tokens you would need to communicate with Platform of Trust and use its functionality. The only way to get `Authrozation token` is to authorize to Platform of Trust as a user. This kind of token will last for 24 hours since you authorized. You can have at maximum N number of tokens at the same time (?). You need to have different tokens depends on environment you are using (sandbox or production). 
  
  
 ## Register a new user
 
 ### Register user
 
-In order to be able to use PoT's most demanding features, users must have created a new identity in the system. We start by simply creating a new user.
+In order to be able to use Platform of Trust's most demanding features, users must have created a new identity in the system. We start by simply creating a new user.
 
 Request:
 
@@ -231,7 +231,7 @@ Response:
 ```
 
 
-Now you can use PoT APIs that require `Authorization token`. Those usually are the most useful endpoints. 
+Now you can use Platform of Trust APIs that require `Authorization token`. Those usually are the most useful endpoints. 
 
 
 ## Web UI
