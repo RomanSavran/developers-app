@@ -140,7 +140,7 @@ Beside creating new identities, reading existing identities is also very useful 
 
 ```
 curl -i --request GET \
-  --url http://192.168.99.100:32000/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -182,7 +182,7 @@ As you can see the API returns exact data we provided when we were creating our 
 
 ```
 curl --request POST \
-  --url http://192.168.99.100:32000/identities/v1/<INSERT_FROM_IDENTITY_ID>/link/<INSERT_TO_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_FROM_IDENTITY_ID>/link/<INSERT_TO_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' \
   --header 'content-type: application/json' \
   --data '{
@@ -229,7 +229,7 @@ Request template:
 
 ```
 curl --request POST \
-  --url http://192.168.99.100:32000/identities/v1/<INSERT_SENSOR_IDENTITY_ID>/link/<INSERT_APARTMENT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_SENSOR_IDENTITY_ID>/link/<INSERT_APARTMENT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' \
   --header 'content-type: application/json' \
   --data '{
@@ -256,7 +256,7 @@ We have already learnt how to read particular identity by its `id`. Let's see ho
 
 ```
 curl -i --request GET \
-  --url http://192.168.99.100:32000/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -308,7 +308,7 @@ As you can see, now when we read `Sensor` identity data, it has `outLinks` data.
 
 ```
 curl -i --request GET \
-  --url http://192.168.99.100:32000/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -369,5 +369,38 @@ HTTP/1.0 200 OK
 }
 ``` 
 
+If you followed this guide from the beginning and complete all its steps. You should have data that looks like one above.
+
+You can also requests only links of certain identity.
+
+```
+curl -i --request GET \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID>/links \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
+```
+
+
 ## Delete identities and links 
 
+#### Request template:
+
+```
+curl --request DELETE \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
+```
+
+Response
+
+```
+HTTP/1.0 422 Unprocessable Entity
+```
+
+```
+{
+  "error": {
+    "status": 422,
+    "message": "Could not delete identity, reason: links exist to or from the identity."
+  }
+}
+```
