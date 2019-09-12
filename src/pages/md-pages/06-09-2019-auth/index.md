@@ -32,10 +32,10 @@ Authorization tokens are one of the most essential and useful tokens you would n
 
 In order to be able to use Platform of Trust's most demanding features, users must have created a new identity in the system. We start by simply creating a new user.
 
-Request:
+#### Request template:
 
 ```
-curl --request POST \
+curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/register \
   --header 'content-type: multipart/form-data \
   --form email=foobar@example.com \
@@ -82,7 +82,7 @@ In this guide we are going to use `My World App` as an example of oauth applicat
 Request:
 
 ```
-curl --request POST \
+curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/authorizeApplication \
   --header 'content-type: multipart/form-data; \
   --form userId=33237067-e72c-4f26-b78b-9f9e234b2e7d \
@@ -102,10 +102,12 @@ HTTP/1.0 200 OK
 
 ### Send authorization request
 
-Now we are ready to log in using our newly created user's credentials. Let's send authorize request: 
+Now we are ready to log in using our newly created user's credentials. Let's send authorize request. 
+
+#### Request template:
 
 ```
-curl --request POST \
+curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/authorize \
   --header 'content-type: multipart/form-data' \
   --form grant_type=authorization \
@@ -132,8 +134,6 @@ Response:
 HTTP/1.0 200 OK
 ```
 
-And payload:
-
 ```
 {"redirectUrl": "https://world-sandbox.oftrust.net/api/exchangeToken?code=9otToANa2Q6mNB2au79X4YgsUy3cvx&redirect_uri=http%3A%2F%2Fworld.local%3A8080%2Fapi%2FexchangeToken&subject=33237067-e72c-4f26-b78b-9f9e234b2e7d&client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304", "userId": "33237067-e72c-4f26-b78b-9f9e234b2e7d"}
 ```
@@ -150,7 +150,7 @@ Here you can copy `redirectUrl` to your browser and hit enter. In chrome develop
 Alternatively to copying `redirectUrl` into your browser, you can continue with cURL command:
 
 ```
-curl -c - --request GET \
+curl -i -c - --request GET \
   --url '<INSERT_REDIRECT_URL_FROM_PREVIOUS_STEP>'
 ```
  
@@ -161,7 +161,7 @@ Authorization	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZ
 ```
  
 
-#### Troubleshooting
+### Troubleshooting
 
 If the user you are logging in has not authorized oauth application as we discussed in step 2.2. You will get the following error:
 
@@ -171,8 +171,6 @@ Response:
 ```
 HTTP/1.0 403 Forbidden
 ```
-
-And payload:
 
 ```
 {
@@ -190,14 +188,14 @@ You can check if `Authorization token` you have obtained is working correctly by
 
 Let's try to send failing request first:
 
-Request:
+#### Request template:
 
 ```
-curl --request GET \
+curl -i --request GET \
   --url https://login-sandbox.oftrust.net/api/me
 ```
 
-Response must be
+Response:
 
 ```
 HTTP/1.0 403 Forbidden
@@ -209,12 +207,12 @@ HTTP/1.0 403 Forbidden
  
 Let's now send the same request with `Authorization token` we received in previous steps.
 
-Request:
+#### Request template:
 
 ```
-curl --request GET \
+curl -i --request GET \
   --url https://login-sandbox.oftrust.net/api/me \
-  --header 'authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZXhwIjoxNTY4MTExMDQ4LCJzdWIiOiIzMzIzNzA2Ny1lNzJjLTRmMjYtYjc4Yi05ZjllMjM0YjJlN2QiLCJhdWQiOiJmNzczZGFmZS0yMGMwLTRhMjUtYWEzZS05ZGEwYjgxYjkzMDQiLCJ0eXBlIjoiVXNlciIsImlzcyI6IkxFIiwiaWF0IjoxNTY4MDI0NjQ4LjAsInNjb3BlcyI6IiJ9.kWLXwnCUqV9qI0jgqMGK9t0sFKKwlM84qgJC-M9eRZBe7eqU2YEZRFaJ6JZ5jPZHjUPsyIX7QTPbcUazHPQOso1vFATdkrOXLg-qvSuq9tarqyxjeAURTet5NR0jnM1jaPSoXty7y7bmW4Sy2y-LHKCY1z37wJ0t16LMr39gvp7Hk6pUWJj2UOedWUiemKXXeEZ4tSRPxOjtQBHyv_ILAebAZFnu1nszHa3wMXg8YiYxCbgOdwHjrshxNDtrfmfHWc2RQxN6PhOcDMIHeUeFdeh3zVVNWTxwUXftvGsk_ZuxIHL1Ax4fB-J4AR05KSDyZeqTkkeiRkpZrF6Ah4IiGp10hShIBtexNyugi0EAYBTi8f4i090f8KecCgE8VMtvWuHA--as1Nrb76BM5BGH6Fm28Bb7T8vKFiIqy22EYGx537LNvAR3WjQ0iIV8s6D9K57vIc-xvWhZO_uhKhjHrz3OQLmLube98mxVusBwZBKmAd7bTL4kCsbtGZmE2zQE5x4mTf5ZoSD-__JBsvBiKSncymfmSUOP0K8StRDa8h2wdR5KeeMwp0wEKGM6_3CNlys1nHSYPs-JZaAiosJ1P8PsUv35l7uHijuHkXNuUUYWg5cLmoGuYF3YhAu7_H9RNXu9p78zNQu7xS5Zpt-en2I2wC1zBTsaPS3gX3ZcRXQ'
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
 Response:
