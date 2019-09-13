@@ -1,7 +1,7 @@
 ---
 path: "/guides/auth"
 date: "2019-09-12T07:07:57.268Z"
-title: "Auth developers guide"
+title: "Identities and links guide"
 type: "page"
 ---
 
