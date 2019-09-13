@@ -500,7 +500,6 @@ curl --request DELETE \
 Parameters:
 
 - `INSERT_IDENTITY_ID` is `id` of `Sensor` identity. 
-- `Sensor` identity just now. And will get a following response.  
 - `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.  
 
 If you followed this guide carefully and ran all the requests we provided until now, you should not be able to delete.
