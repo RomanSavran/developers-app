@@ -16,7 +16,7 @@ This guide is meant for developers who has just started working with Platform Of
     1. Send register request
     2. Authorize oauth application
 3. Authorization 
-    1. Send authorize request
+    1. Send authorization request
     2. Obtain authorization token
 4. Test authorization token
 5. Web UI
