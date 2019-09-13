@@ -39,7 +39,10 @@ From `Apartment` type you can tell what kind of identity this is. Though link `h
 2. View created identities
 3. Create links between identities
 4. Explore identities and links
-5. Delete identities and links
+5. Update and delete linked identities
+    1. Delete links
+    2. Delete identities
+6. Summary
 
 
 ## Create identities
@@ -61,6 +64,10 @@ curl -i --request POST \
   }
 }'
 ``` 
+
+Parameters:
+
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
 
 When you create a new identity, you always have to specify valid `type`, `context` and `name`. Some identities might require more data in order to be created. This type of information is specified in a `Context` file, in our case it is [https://standards.oftrust.net/v1/Context/Identity/Space/Apartment/](https://standards.oftrust.net/v1/Context/Identity/Space/Apartment/). More information and available context files you can find at [Platform Of Trust' standards website](https://standards.oftrust.net/v1/).
 
@@ -109,6 +116,10 @@ curl -i --request POST \
 }'
 ```
 
+Parameters:
+
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
 Request for `Sensor`:
 
 ```
@@ -127,6 +138,9 @@ curl -i --request POST \
 }'
 ```
 
+Parameters:
+
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
 
 After this chapter you should have created at least 3 identities of different types: `Buidling`, `Apartment` and `Sensor`.
 
@@ -143,6 +157,10 @@ curl -i --request GET \
   --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
+
+Parameters:
+
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
 
 Response:
 
@@ -191,6 +209,12 @@ curl --request POST \
 }'
 ```
 
+Parameters:
+
+- `INSERT_FROM_IDENTITY_ID` 
+- `INSERT_TO_IDENTITY_ID`
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
 If you replace `<INSERT_FROM_IDENTITY_ID>` with `id` of `Apartment` identity and `INSERT_FROM_IDENTITY_ID` with `id` of `Budling` identity, you will get cURL command of valid HTTP request to Platform of Trust API. This request will create a `BelongsTo` link from `Apartment` identity to `Buidling` identity. While creating `Links`, just like `Identities`, the request has to have `type` and `context`. And again, more information regarding `Context` data and available context files you can find at [Platform Of Trust' standards website](https://standards.oftrust.net/v1/). We will cover `Context` in one of our following guides. 
 
 Response:
@@ -238,6 +262,12 @@ curl --request POST \
 }'
 ```
 
+Parameters:
+
+- `INSERT_SENSOR_IDENTITY_ID` 
+- `INSERT_APARTMENT_IDENTITY_ID`
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
 When the last request successfully completed, we should have 3 identities linked together.
 
 ```
@@ -259,6 +289,11 @@ curl -i --request GET \
   --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
+
+Parameters:
+
+- `INSERT_IDENTITY_ID` 
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
 
 Response:
 
@@ -312,7 +347,10 @@ curl -i --request GET \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
-Where `INSERT_IDENTITY_ID` in this guide's example case is `459d500d-9cf5-4f1a-8314-fba4d4ec6434`.
+Parameters:
+
+- `INSERT_IDENTITY_ID` in this guide's example case is `459d500d-9cf5-4f1a-8314-fba4d4ec6434`.
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
 
 Response:
 
@@ -379,8 +417,77 @@ curl -i --request GET \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
+Parameters:
 
-## Delete identities and links 
+- `INSERT_IDENTITY_ID`
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
+
+## Update and delete linked identities 
+
+Updating identity as easy as creating a new one. Users cannot update any identity because they need to have certain permissions to do so. However usually you should be able to update any identity created by yourself. when you need to update identity, you can send following request:
+
+#### Request template
+
+```
+curl --request PUT \
+  --url http://192.168.99.100:32000/identities/v1/e5d73aaf-b4c3-4c34-a6e3-071d826b06b1 \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' \
+  --header 'content-type: application/json' \
+  --data '{
+	"context": "https://standards.oftrust.net/v1/Context/Identity/Device/Sensor/",
+	"type": "Sensor",
+	"data": {
+		"name": "THE Best sensor 10000!",
+		"colorName": "Blue",
+		"descriptionGeneral": "This sensor does its job!"
+	}
+}'
+```
+
+Response:
+
+```
+HTTP/1.0 200 OK
+```
+
+```
+{
+  "@context": "https://standards.oftrust.net/v1/Context/Identity/Device/Sensor/",
+  "@type": "Sensor",
+  "@id": "e5d73aaf-b4c3-4c34-a6e3-071d826b06b1",
+  "inLinks": [],
+  "outLinks": [
+    {
+      "@context": "https://standards.oftrust.net/v1/Context/Link/BelongsTo/",
+      "@type": "BelongsTo",
+      "@id": "1b4384ce-dfcb-4ead-8024-783431424820",
+      "from": "e5d73aaf-b4c3-4c34-a6e3-071d826b06b1",
+      "to": "459d500d-9cf5-4f1a-8314-fba4d4ec6434",
+      "data": {},
+      "metadata": {
+        "createdAt": "2019-09-12T10:04:54+00:00",
+        "createdBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d",
+        "updatedAt": "2019-09-12T10:04:54+00:00",
+        "updatedBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d"
+      }
+    }
+  ],
+  "data": {
+    "name": "THE Best sensor 10000!",
+    "colorName": "Blue",
+    "descriptionGeneral": "This sensor does its job!"
+  },
+  "metadata": {
+    "createdAt": "2019-09-12T07:23:50+00:00",
+    "createdBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d",
+    "updatedAt": "2019-09-12T10:58:26+00:00",
+    "updatedBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d"
+  }
+}
+```
+
+Of course sometimes you need to delete identity all together. 
 
 #### Request template:
 
@@ -389,6 +496,14 @@ curl --request DELETE \
   --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
+
+Parameters:
+
+- `INSERT_IDENTITY_ID` is `id` of `Sensor` identity. 
+- `Sensor` identity just now. And will get a following response.  
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.  
+
+If you followed this guide carefully and ran all the requests we provided until now, you should not be able to delete.
 
 Response
 
@@ -404,3 +519,98 @@ HTTP/1.0 422 Unprocessable Entity
   }
 }
 ```
+
+As you can see, the reason is written in response: `Could not delete identity, reason: links exist to or from the identity.`. 
+
+### Delete links
+
+In order to delete this identity we need to make sure that it does not connect to any other identity. Let's list all the links `Sensor` identity has:
+
+#### Request template:
+
+```
+curl --request GET \
+  --url http://192.168.99.100:32000/identities/v1/<INSERT_IDENTITY_ID>/links \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
+```
+
+Parameters:
+- `INSERT_IDENTITY_ID` is `id` of `Sensor` identity. 
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
+Response:
+
+```
+HTTP/1.0 200 OK
+```
+
+```
+{
+  "@context": "https://schema.org/",
+  "@type": "collection",
+  "ItemList": [
+    {
+      "@context": "https://standards.oftrust.net/v1/Context/Link/BelongsTo/",
+      "@type": "BelongsTo",
+      "@id": "1b4384ce-dfcb-4ead-8024-783431424820",
+      "from": "e5d73aaf-b4c3-4c34-a6e3-071d826b06b1",
+      "to": "459d500d-9cf5-4f1a-8314-fba4d4ec6434",
+      "data": {},
+      "metadata": {
+        "createdAt": "2019-09-12T10:04:54+00:00",
+        "createdBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d",
+        "updatedAt": "2019-09-12T10:04:54+00:00",
+        "updatedBy": "33237067-e72c-4f26-b78b-9f9e234b2e7d"
+      }
+    }
+  ]
+}
+```
+
+Let's delete existing links.
+
+#### Request template:
+
+```
+curl --request DELETE \
+  --url http://192.168.99.100:32000/identities/v1/<INSERT_SENSOR_IDENTITY_ID>/link/<INSERT_APARTMENT_IDENTITY_ID>/<INSERT_LINK_TYPE_TO_DELETE> \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>'
+```
+
+Parameters:
+ 
+ - `INSERT_SENSOR_IDENTITY_ID` is `id` of `Sensor` identity
+ - `INSERT_APARTMENT_IDENTITY_ID`  is `id` of `Apartment` 
+ - `INSERT_LINK_TYPE_TO_DELETE` type of link you want to remove e.g. `BelongsTo`
+ - `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
+Response:
+
+```
+HTTP/1.0 204 No Content
+```
+
+### Delete identities
+
+Now you can list all links of `Sensor` identity to make sure there is no links connected with it. Once it is checked, we can try to remove `Sensor` identity again.
+
+```
+curl --request DELETE \
+  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
+``` 
+
+Parameters:
+- `INSERT_IDENTITY_ID` is `id` of `Sensor` identity. 
+- `Sensor` identity just now. And will get a following response.  
+- `INSERT_AUTHORIZATION_TOKEN` - Bearer or user token.
+
+Response:
+
+```
+HTTP/1.0 204 No Content
+```
+
+### Summary
+
+In this guide you have learnt how to create, update and delete identities and links. As well as what are `Identities` and `Links` in Platform of Trust.
