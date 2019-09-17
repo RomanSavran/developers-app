@@ -37,7 +37,7 @@ In order to be able to use Platform of Trust's most demanding features, users mu
 ```
 curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/register \
-  --header 'content-type: multipart/form-data \
+  --header 'content-type: application/x-www-form-urlencoded \
   --form email=foobar@example.com \
   --form password=mypasswordtest \
   --form firstName=Foo \
@@ -84,7 +84,7 @@ Request:
 ```
 curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/authorizeApplication \
-  --header 'content-type: multipart/form-data; \
+  --header 'content-type: application/x-www-form-urlencoded \
   --form userId=33237067-e72c-4f26-b78b-9f9e234b2e7d \
   --form clientId=f773dafe-20c0-4a25-aa3e-9da0b81b9304
 ```
@@ -109,7 +109,7 @@ Now we are ready to log in using our newly created user's credentials. Let's sen
 ```
 curl -i --request POST \
   --url https://login-sandbox.oftrust.net/api/authorize \
-  --header 'content-type: multipart/form-data' \
+  --header 'content-type: application/x-www-form-urlencoded' \
   --form grant_type=authorization \
   --form client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304 \
   --form email=foobar@example.com \
