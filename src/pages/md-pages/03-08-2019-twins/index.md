@@ -154,7 +154,7 @@ Beside creating new identities, reading existing identities is also very useful 
 
 ```
 curl -i --request GET \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -286,7 +286,7 @@ We have already learnt how to read particular identity by its `id`. Let's see ho
 
 ```
 curl -i --request GET \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -343,7 +343,7 @@ As you can see, now when we read `Sensor` identity data, it has `outLinks` data.
 
 ```
 curl -i --request GET \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -413,7 +413,7 @@ You can also requests only links of certain identity.
 
 ```
 curl -i --request GET \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID>/links \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID>/links \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -493,7 +493,7 @@ Of course sometimes you need to delete identity all together.
 
 ```
 curl --request DELETE \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ```
 
@@ -595,7 +595,7 @@ Now you can list all links of `Sensor` identity to make sure there is no links c
 
 ```
 curl --request DELETE \
-  --url https://api-sandbox.oftrust.net/identities/<INSERT_IDENTITY_ID> \
+  --url https://api-sandbox.oftrust.net/identities/v1/<INSERT_IDENTITY_ID> \
   --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
 ``` 
 
