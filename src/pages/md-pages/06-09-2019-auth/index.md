@@ -19,7 +19,7 @@ Using `OAuth 2.0` to access Platform of Trust. This guide is meant for developer
 
 ## Get OAuth credentials
 
-First of all developers must make sure they have `OAuth credentials` that will be pass to `authorization server`. To obtain `OAuth 2.0 credentials` you have to create `OAuth client`. We have described it in `Register an application` guide. As a result you must have at least following data:
+First of all developers must make sure they have `OAuth credentials` that will be pass to `authorization server`. To obtain `OAuth credentials` you have to create `OAuth client`. We have described it in `Register an application` guide. As a result you must have at least following data:
 
 ```
 Client ID: cc4a3f95-ad8b-4048-842e-71d6ea810bc9
