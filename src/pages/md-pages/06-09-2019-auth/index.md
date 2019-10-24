@@ -1,7 +1,7 @@
 ---
 path: "/guides/auth"
 date: "2019-09-06T07:07:57.268Z"
-title: "Using OAuth 2.0 to Access Platform of Trust APIs"
+title: "Integrate OAuth 2.0 to access Platform of Trust APIs"
 type: "page"
 ---
 
