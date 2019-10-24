@@ -1,7 +1,7 @@
 ---
 path: "/guides/identities-and-links"
 date: "2019-09-12T07:07:57.268Z"
-title: "Identities and links guide"
+title: "Identities and links"
 type: "page"
 ---
 
