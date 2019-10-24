@@ -1,237 +1,186 @@
 ---
 path: "/guides/auth"
 date: "2019-09-06T07:07:57.268Z"
-title: "Auth developers guide"
+title: "Using OAuth 2.0 to Access Platform of Trust APIs"
 type: "page"
 ---
 
 ## Introduction 
 
-This guide is meant for developers who has just started working with Platform Of Trust technology. In this guide we will cover very basic, but extremely important part of the system - authentication. By the end of this guide you should be able to register and log in as a developer, obtain `Authorization token` and be able to use it via CLI or as a part of our web application.
+Using `OAuth 2.0` to access Platform of Trust. This guide is meant for developers who want to provide access to Platform of Trust APIs by implementing proper `authorization flow` for their users. In this guide you will find information on how to build basic `authorization flow`.  
 
 ## Overview
 
-1. Authorization tokens
-2. Register a new user
-    1. Send register request
-    2. Authorize oauth application
-3. Authorization 
-    1. Send authorization request
-    2. Obtain authorization token
-4. Test authorization token
-5. Web UI
+1. Get OAuth credentials. 
+2. Implement authorization process.
+   1. Login endpoint
+   2. Exchange token 
+3. Summary
 
-## Authorization tokens
+## Get OAuth credentials
 
-Authorization tokens are one of the most essential and useful tokens you would need to communicate with Platform of Trust and use its functionality. The only way to get `Authrozation token` is to authorize to Platform of Trust as a user. This kind of token will last for 24 hours since you authorized. You can have at maximum N number of tokens at the same time (?). You need to have different tokens depends on environment you are using (sandbox or production). 
+First of all developers must make sure they have `OAuth credentials` that will be pass to `authorization server`. To obtain `OAuth 2.0 credentials` you have to create `OAuth client`. We have described it in `Register an application` guide. As a result you must have at least following data:
+
+```
+Client ID: cc4a3f95-ad8b-4048-842e-71d6ea810bc9
+Client Secret: CQYP75kYXbmUgcKQZYg7q-2f_ndeJ-_9biEsbyLzUXQ
+App access tokens: 
+[
+    {‘id’: ‘98e5c752-1a2b-4c78-b021-2b9e447c75af’, ‘token’: ‘413af71d-4d1e-4bbe-8b12-fe16f723ee9c’},
+    {‘id’: ‘197969b8-32e0-47b1-a722-d82052dd5a53’, ‘token’: ‘f097cd95-9943-45e9-9311-159cb54712ca’}
+] 
+```
+
+This `OAuth 2.0 credentials` is required to start implementing `authorization flow` to Platform of Trust.   
  
- 
-## Register a new user
+## Implement authorization process.
 
-### Register user
-
-In order to be able to use Platform of Trust's most demanding features, users must have created a new identity in the system. We start by simply creating a new user.
-
-#### Request template:
+Usually developers set up a backend application to communicate with `Authorization` server. In Platform of Trust, your application will be sending requests to `Login poral`. The portal will take of some other parts of `authorization flow`. In your application you should have 2 necessary endpoints: `login` and `exchangeToken`.
 
 ```
-curl -i --request POST \
-  --url https://login-sandbox.oftrust.net/api/register \
-  --header 'content-type: application/x-www-form-urlencoded \
-  --form email=foobar@example.com \
-  --form password=mypasswordtest \
-  --form firstName=Foo \
-  --form lastName=Bar \
-  --form termsAccepted=true
-```
+# Routes and API endpoints
 
-Response:
+GET /login
+GET /exchangeToken
+``` 
 
-```
-HTTP/1.0 201 Created
-Content-Type: application/json
-Content-Length: 232
+The whole process should look like this:
 
-{
-  "@context": "https://standards.lifeengine.io/v1/Context/Identity/Person/",
-  "@type": "Person",
-  "@id": "33237067-e72c-4f26-b78b-9f9e234b2e7d",
-  "email": "foobar@example.com",
-  "role": "developer",
-  "firstName": "Foo",
-  "lastName": "Bar"
-}
-```
+![](oauth_scheme.jpg) 
 
+### Login endpoint
 
-### Authorize application
+`/login` endpoint's main purpose is to generate uri to `Login portal` and provide required parameters that will be used by `Login portal` to authenticate users. 
 
-If you try to log in right now, you will not be able to do so, and get this error:
+Required parameters are:
 
 ```
-HTTP/1.0 403 Forbidden
-```
-```
-{"error": {"status": 403, "message": "Permission denied"}}
-```
-
-Even though a new user record was created in previous step, you won't be able to even log in using user credentials. So before we can actually act from behalf of the user, we have to authorize at least 1 oauth application to be able to read our user's data and perform some other actions. After that we can log in. 
-
-In this guide we are going to use `My World App` as an example of oauth application.  
-
-Request:
-
-```
-curl -i --request POST \
-  --url https://login-sandbox.oftrust.net/api/authorizeApplication \
-  --header 'content-type: application/x-www-form-urlencoded \
-  --form userId=33237067-e72c-4f26-b78b-9f9e234b2e7d \
-  --form clientId=f773dafe-20c0-4a25-aa3e-9da0b81b9304
+grant_type # Must be "authorization"
+response_type # Must be "code" 
+client_id # ID of OAuth application you have gotten in step 1
+redirect_uri # Url where users will be redirected to exchangeToken, also done in step 1
+cancel_url # Fallback URL incase user decline autorization of your application 
 ```
 
-`userId` - is id of user you want to authorized the app 
-`clientId` - is id of oauth application. There is a guide where you can learn how to create your own oauth application, but for now we can use `My World App` oauth application. 
-
-Response:
+Optional parameter:
 
 ```
-HTTP/1.0 200 OK
+state
 ```
 
-## Authorization
+Event though `state` is optional, it is recommended to generate one each request. Enforce `state` validation during `/exchangeToken` to add additional security layer. [Read more](https://auth0.com/docs/protocols/oauth2/oauth-state) about `state`. 
 
-### Send authorization request
-
-Now we are ready to log in using our newly created user's credentials. Let's send authorize request. 
-
-#### Request template:
+Example: 
 
 ```
-curl -i --request POST \
-  --url https://login-sandbox.oftrust.net/api/authorize \
-  --header 'content-type: application/x-www-form-urlencoded' \
-  --form grant_type=authorization \
-  --form client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304 \
-  --form email=foobar@example.com \
-  --form redirect_uri=https://world-sandbox.oftrust.net/api/exchangeToken \
-  --form response_type=code \
-  --form password=mypasswordtest
+https://login-sandbox.oftrust.net/?grant_type=authorization&response_type=code&redirect_uri=https://world-sandbox.oftrust.net/api/exchangeToken&client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304&cancel_url=https://world-sandbox.oftrust.net&state=eyJkIjogeyJyIjogImh0dHBzOi8vd29ybGQtc2FuZGJveC5vZnRydXN0Lm5ldC9hcGkvZXhjaGFuZ2VUb2tlbiIsICJ0cyI6IDE1NzE3NDkwMzZ9LCAiaCI6ICIzODc4MTFiYzdkOWRiODEwYTM2Yzk0MmQ0YWMwZTk3MmY1NGQxODBjIn0=
 ```
 
-`grant_type` - The grant type of the authorization flow, MUST be `authorization_code`
+Pseudo code:
 
-`response_type` - The response type for the request, MUST be `code`
+````
+state = my_app.generate_state()
+auth_uri = my_app.generate_uri(
+    grant_type=authorization, 
+    response_type=code, 
+    client_id=foobar, 
+    redirect_uri=foobar.example.com/exachangeToken, 
+    cancel_url=foobar.example.com, 
+    state=state
+)
+my_app.redirect(auth_uri)
+````
 
-`redirect_uri` - The redirect URI for the authorization flow. This value is also defined by the oauth app, in our guide we use the uri defined by `My World app` oauth application. 
+This uri will redirect a user to `Login portal`, where `authorization flow` continues. At some point `Login portal` will generate an authorization `code` and redirect the user from `Login portal` to `redirect_uri` that you specified in this step. The purpose of it is to exchange the `code` for an access token and some other data.   
+
+
+### Exchange token
+
+This user request due to redirection from `Login portal` to your `redirect_uri`, should contain at least following params:
+
+```
+code - authorization code generated by authrozation server
+subject - is ID of created user, can be used to give oauth client permissions to read your data
+client_id - your OAuth application ID, can be used to validate state
+```
 
 Optional:
 
-`state` - An optional state for the request, could be a CSRF token.
-
-Response:
- 
 ```
-HTTP/1.0 200 OK
+state # Should be validated. Parameter generated during /login request, optional but recommned to protect against CSRF. 
 ```
 
+Example:
 ```
-{"redirectUrl": "https://world-sandbox.oftrust.net/api/exchangeToken?code=9otToANa2Q6mNB2au79X4YgsUy3cvx&redirect_uri=http%3A%2F%2Fworld.local%3A8080%2Fapi%2FexchangeToken&subject=33237067-e72c-4f26-b78b-9f9e234b2e7d&client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304", "userId": "33237067-e72c-4f26-b78b-9f9e234b2e7d"}
-```
-
-
-Here you can copy `redirectUrl` to your browser and hit enter. In chrome developers tools inside `Application` tab, you can explore Cookies, where you can find `Authorization token` itself:
-
-```
-"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZXhwIjoxNTY4MTE5MjU4LCJzdWIiOiJlMTUzZTIwMC0xNGQ1LTQzY2UtOTVkYy0yZGIyMmFjNjc2N2YiLCJhdWQiOiJmNzczZGFmZS0yMGMwLTRhMjUtYWEzZS05ZGEwYjgxYjkzMDQiLCJ0eXBlIjoiVXNlciIsImlzcyI6IkxFIiwiaWF0IjoxNTY4MDMyODU4LjAsInNjb3BlcyI6IiJ9.YhwvWuyQTihDNQaDCikSVRVQOq4tt3btquMH533f7wskD6qkGp812QxgBXRMKhXfVslK2u3xrKbhQluVEyk4i9Jk14Ile68GvHuBIWZyYeQ4-8NXAdkzL8DqnLwb0HeW7kWDYVu5QWiTZumSXUrGupJ6ubNcMwbRDEUG52zO7SQSiu5nfY8ftpyBOIEvNCFsTDOkLMXm4jbEi-GF14_ybbhNUl1Y6zX6sjfo89psLFObHwqTjWxK1kIbNhXil2vnzNaHV_6foCqTG3HW9ewmzcmWSVwk914xk7KJP3jE7BWJKl_osKFMl9yyQYxSNQQtBgrWiK2WAnxsXMD_9rcgTj3_GjqhoX7D8jUPI7io_2pPL-rPvmYgcxnVrozNm2ADxqwHjY59sKbsyP8KqmgHvTBP6imkF0GHFM89IgjSBBXjywDbllHyX-SnbpVqyL9L7dyV59nYUiHorhxxQTTTPaqjfYCEZb6fiheGfd3LPxZsavE_VChUgnubpUsum7MTvUQEdm-hIhPGtrPNIakuvZQLBgHjK1l-kVDMQrWSjzNi9IM0HQiKwWaLIOdasu5zvBCKXCA_l5Y68Jrdtk3qtsST16m9Z5ZIgRNoSvZIKHwaobV35uqKtX_fdrZj-XGVRetmQodXbOdVZhoQPNPerqFCE1szH6jJj3IzlxaN5QU"
+https://foobar.example.com/exchangeToken?code=35z9T7bBmbtbhRZ6xTF1NFiYnSava3&state=eyJkIjogeyJyIjogImh0dHBzOi8vd29ybGQtc2FuZGJveC5vZnRydXN0Lm5ldC9hcGkvZXhjaGFuZ2VUb2tlbiIsICJ0cyI6IDE1NzE4MTgzNjB9LCAiaCI6ICI2ZDRiNTIxMzlhZjI5MzM4YzJiZGFmY2Q2Y2E1N2QzMjllMjdmODBhIn0%3D&redirect_uri=https%3A%2F%2Ffoorbar.example.com%2FexchangeToken&subject=90dea9db-4515-4640-93dd-a19faba9c9f0&client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304
 ```
 
-, as well as `expiration`, right now it is set to `24 hours`. 
-
-Alternatively to copying `redirectUrl` into your browser, you can continue with cURL command:
+But it is not there yet, we still need to provide additional data to `Authorization Server`
 
 ```
-curl -i -c - --request GET \
-  --url '<INSERT_REDIRECT_URL_FROM_PREVIOUS_STEP>'
+client_secret # OAuth application's secret you recieved in step 1
+client_id # OAuth application's id you recieved in step 1 or client_id from initial user exchangeToken request
+redirect_uri # redirect uri to validate, must be the same as provided previously in `/login`  
+grant_type # Must be "exchange_token"
+code # from initial user exchangeToken request 
+state # from initial user exchangeToken request
 ```
- 
- Notice we use `-c` option with cURL to print Cookies into our terminal. Response should contain `Authorization` token:
- 
-```
-Authorization	"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZXhwIjoxNTY4MTIwMDAwLCJzdWIiOiIzMzIzNzA2Ny1lNzJjLTRmMjYtYjc4Yi05ZjllMjM0YjJlN2QiLCJhdWQiOiJmNzczZGFmZS0yMGMwLTRhMjUtYWEzZS05ZGEwYjgxYjkzMDQiLCJ0eXBlIjoiVXNlciIsImlzcyI6IkxFIiwiaWF0IjoxNTY4MDMzNjAwLjAsInNjb3BlcyI6IiJ9.b_gMNIKODrLzfooYadqI2VJGTuc7c26x8S7OncpyXA6XtZP_E3rlI9H5ot84zQS9SqHdLk23JxKdCiQCtbTpYcLn8QcUlF7mWweQmq1ewanHPHhfSb6uileQNQKGnGEVe3V4a8Hy2x_d8rOYujwFA2sfxfcEZdArAnfK_IIHfWzC5zz78c3nrT5LeqE1BP1RHzpLKkc91rcLcwa0ldKTDQlGDdi6hBYneaMGToqF3yTQxd1v_4YHLGp3i4A_TZu8wrBMoWFvJburYp45itsyElatNSwFMkNz6L7w6sxDQWTB9MznUuhk90U6bD49GljhY-Ny0XgwEzzUHeyj8oJHbkxfrJHpDHl-uNBQyPohwVwyaDdh6BDFJgM3JHOlezJuH_RbMCcUa1XqwkGhZwdXYNP7fgpTkEDY41_oRwsrPx9jM9jlvG9VBTEPFijATy-IV-tXH0VJ4pLO0fJ1IgAuUMnQJOxgnUPSuI2g_zhMLojgDMJUo1kONAWdoc7UwLMeR33ALlohLBdfnm0-thLTR3GOpuXgWC5Nx067Fy4ydwTpObrDu2LnliRFNvE2fQOXOrQKAz_BmOonL7xc2jFv5w0L9MSDfZcLzJYrMk2MF5E_fNOSiw8qW82U5a6E42FkxogN1o85AApGxvUWkdfG4MjOlGrgqW1QhdEsJLNGV2Y"
-```
- 
 
-### Troubleshooting
+So from your backend you need to send an API request to `Login portal`.
 
-If the user you are logging in has not authorized oauth application as we discussed in step 2.2. You will get the following error:
-
-
-Response:
+Example:
 
 ```
-HTTP/1.0 403 Forbidden
+curl --request POST \
+  --url https://login.oftrust.net/api/exchangeToken \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data code=5z9T7bBmbtbhRZ6xTF1NF \
+  --data client_id=f773dafe-20c0-4a25-aa3e-9da0b81b9304 \
+  --data redirect_uri=https://foorbar.example.com \
+  --data grant_type=authorization_code \
+  --data state=IxMzlhZjI5MzM4YzJiZGFmY2Q2Y2E1 \
+  --data client_secret=ICI2ZDRiNTIxMzlhZjI5MzM4YzJiZGFmY2Q2Y2
 ```
+
+With this request you should get following response's data:
 
 ```
 {
-  "message": "App authorization required",
-  "userId": "f5892015-5089-482d-ac45-3fac263df998"
+    'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzY29wZSI6bnVsbCwiZXhwIjoxNTcxOTkxODU5LCJzdWIiOiJlMTUzZTIwMC0xNGQ1LTQzY2UtOTVkYy0yZGIyMmFjNjc2N2YiLCJhdWQiOiJmNzczZGFmZS0yMGMwLTRhMjUtYWEzZS05ZGEwYjgxYjkzMDQiLCJ0eXBlIjoiVXNlciIsImlzcyI6IkxFIiwiaWF0IjoxNTcxOTA1NDU5LjAsInNjb3BlcyI6IiJ9.NvMhYBUsDuO_sVt2Ar5-JOBPNvwOWdH_IO0Du521oXKpb-XMcqMwRCQHr1CYOGhhnwtEeFLuQPKHuNIFPDaObGW3PcGu8Z256O0iATyBlPs5D59Pcnup5Rde3eleOuHPXefSgetqRuRKvFuVvYOSjThC3oxqriRcA9Q271q7sGXSrV5ZhB0FiqdYwEV04Ln-lT8GcgZmfWwptZzV2Kcjy_RZp1f3Olc15UvypL67yBQlNhJk2qTCAiWvcj-xGMPAN-vzHJH7vsoZEiojYZlPAcZmJ8wYnR8Uy6IGEt_wyLCZbjwcfHFPZT7d4EgrvAZKfNO1t5SQowWZ9ID9IqBOgwOXiNCQINgycoTBeapT-38smflpnoYiumbBgX_8gO7XITH_EQQ7RtXOjpA2pajmyOT9m8BWlAfDTqu4FTSzJ__nPbwR4S8PAj5YhjqCJ_DbPTER91CFJByzDP3YYFFqXQND7YZn1EwMpZSSOi0fJ4g7cO7x4CnhD3HAyw9KVVsaM9xsAV7eBYudKbJ2TkBj1br0FidC_6MU68fja9ct2KomEw3fHk2fmvwRlnhKBcYuA-238QWHnMf0bQWuHE_ilWm0NWLFUbLfzpCfjILF38OI-dEeV2MRdpJk1Y7p8fxnZUyTONLYiVOXCttBK1tcmp-B2eFhtQpYchJyEFqANEs',
+    'expires_in': 86400,
+    'token_type': 'Bearer',
+    'state': 'eyJkIjogeyJyIjogImh0dHA6Ly93b3JsZC5sb2NhbDo4MDgwL2FwaS9leGNoYW5nZVRva2VuIiwgInRzIjogMTU3MTkwNTQ0Nn0sICJoIjogImE3NjI3ZDFlN2RkMmM2MzQyNWIyNWJkNDg0YzRmMDI3ZTUxOGZlYzEifQ==',
+    'refresh_token': 'XBR0l7f8eWspLlxmrk2UPjSNVX0zuC'
 }
 ```
 
-In order to fix this, you need to go to step 2.2 and send authorize application request to allow oauth application to read your user data. 
-
-
-## Test authorization token 
-
-You can check if `Authorization token` you have obtained is working correctly by sending `/me` request.
-
-Let's try to send failing request first:
-
-#### Request template:
+Note `access_token` should be passed with each request that require `Authorization` to API. You can e.g. store this token to client's cookie with `httpOnly` and `secure` flags. Then pass it to any Platform of Trust APIs in `Authorization` header.
 
 ```
-curl -i --request GET \
-  --url https://login-sandbox.oftrust.net/api/me
-```
+headers['Authorization'] = authorization_toke
+```     
 
-Response:
-
-```
-HTTP/1.0 403 Forbidden
-```
+Pseudo code:
 
 ```
-{"error": {"status": 403, "message": "Permission denied"}}
-```
- 
-Let's now send the same request with `Authorization token` we received in previous steps.
+state = my_app.request.get('state')
+code = my_app.request.get('code')
 
-#### Request template:
+oauth_res = my_app.send_exchange_token_request(state, code, client_secret, client_id,  redirect_uri, grant_type)
+my_app.validate_state(oauth_res.state)
 
-```
-curl -i --request GET \
-  --url https://login-sandbox.oftrust.net/api/me \
-  --header 'authorization: <INSERT_AUTHORIZATION_TOKEN>' 
-```
+bearer_token = f'{oauth_res.token_type} {oauth_res.access_token]}'
+my_app.set_cookie('Authorization',
+                   bearer_token,
+                   max_age=oauth_res.expires_in,
+                   httponly=True,
+                   secure=True
+                   samesite='Strict'
+)
 
-Response:
-```
-{
-  "@context": "https://standards.lifeengine.io/v1/Context/Identity/Person/",
-  "@type": "Person",
-  "@id": "33237067-e72c-4f26-b78b-9f9e234b2e7d",
-  "email": "foobar@example.com",
-  "role": "developer",
-  "firstName": "Foo",
-  "lastName": "Bar"
-}
+my_app.redirect(foo_bar_host) 
 ```
 
+## Summary
 
-Now you can use Platform of Trust APIs that require `Authorization token`. Those usually are the most useful endpoints. 
-
-
-## Web UI
-
-You can do all the same steps above using web application. You need to go to [My World App](https://world-sandbox.oftrust.net/) and simply follow authorization flow.
+This guide contains bare minimum about how to get access to Platform of Trust APIs via OAuth 2.0. 
