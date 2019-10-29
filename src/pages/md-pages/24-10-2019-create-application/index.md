@@ -20,7 +20,7 @@ type: "page"
 
 ## What is application?
 
-Application is simply an identity in Platform of Trust. You can read more about identities in our [Identities and links](./guides/identities-and-links) guide. However `application` has a special purpose for developers. It is required to start building your own applications on top of Platform of Trust. 
+Application is simply an identity in Platform of Trust. You can read more about identities in our [Identities and links](/guides/identities-and-links) guide. However `application` has a special purpose for developers. It is required to start building your own applications on top of Platform of Trust. 
 
 After registering an application, you will be able to do these most common and useful things in the platform:
 
@@ -158,7 +158,7 @@ As a result you should get:
 
 ## Summary
 
-Creating an application is easy but important step for developers. After creating an application you should be able to get maximum value out of Platform of Trust APIs. E.g. you can start working with `Data Broker` and create `Data Products`. You can also create `Authorization flow` for your application. It allows your users to access Platform of Trust APIs. Read more in [Integrate OAuth 2.0 to access Platform of Trust APIs](./guides/create-application) guide.
+Creating an application is easy but important step for developers. After creating an application you should be able to get maximum value out of Platform of Trust APIs. E.g. you can start working with `Data Broker` and create `Data Products`. You can also create `Authorization flow` for your application. It allows your users to access Platform of Trust APIs. Read more in [Integrate OAuth 2.0 to access Platform of Trust APIs](/guides/create-application) guide.
 
 
 For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust Application API Documentation](https://docs.oftrust.net/#application-api).
