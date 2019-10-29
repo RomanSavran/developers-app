@@ -20,7 +20,7 @@ type: "page"
 
 ## What is application?
 
-Application is simply an identity in Platform of Trust. You can read more about identities in our `Identities and links` guide. However `application` has a special purpose for developers. It is required to start building your own applications on top of Platform of Trust. 
+Application is simply an identity in Platform of Trust. You can read more about identities in our [Identities and links](./guides/identities-and-links) guide. However `application` has a special purpose for developers. It is required to start building your own applications on top of Platform of Trust. 
 
 After registering an application, you will be able to do these most common and useful things in the platform:
 
@@ -33,7 +33,7 @@ This guide is meant for developers who has already created an account in Platfor
 
 Before you can create an application, you should make sure you are a part of a `Group`. It can be either an organization you are working for, or just a group of developers you are developing with. `Group` must be an identity in Platform of Trust, and you must be linked to it with `MemberOf` type of `Link`.
 
-If you don't belong to any `Group`, you must use `world-sandbox.oftrust.net` to create a `Group`. In UI you can create an `Identity` with a `Group` type, you will get its ID which you will provide when create an application. Upon creation a UI will show: 
+If you don't belong to any `Group`, you must use [world-sandbox.oftrust.net](https://world-sandbox.oftrust.net) to create a `Group`. In UI you can create an `Identity` with a `Group` type, you will get its ID which you will provide when create an application. Upon creation a UI will show: 
 ```
 Group "FooBar" was created. Use this id to create application: 7a5c0197-7e05-4180-8d6f-104911880eee
 ```
@@ -42,7 +42,7 @@ Group "FooBar" was created. Use this id to create application: 7a5c0197-7e05-418
 
 ## How to register an application
 
-You can either use `Application API` or `world.oftrust.net`. But let's see first what parameters you need to specify.
+You can either use `Application API` or [world-sandbox.oftrust.net](https://world-sandbox.oftrust.net). But let's see first what parameters you need to specify.
 
 ### Parameters:
 
@@ -63,12 +63,6 @@ Remember that your application will be just like any other `Identity`. So you mi
 As you can see some of parameters such as `scopes`, `redirectUris` and so on will later be used for `Authorization flow`. You can read more in "Integrate OAuth 2.0 to access Platform of Trust APIs" guide.
 
 ### Application API
-
-```
-NOTE: The `clientSecrets` is shown only once in plain text, when creating
-the application. Make sure you save it somewhere. The client secret is
-used for validating the application.
-```
 
 In order to create an application, you can send a request to `Application API`:
 
@@ -92,6 +86,10 @@ curl --request POST \
 ``` 
  
 In case of successful request, you should get similar data in the response:
+
+NOTE: The `clientSecrets` is shown only once in plain text, when creating
+the application. Make sure you save it somewhere. The client secret is
+used for validating the application.
 
 ```
 {
@@ -160,4 +158,8 @@ As a result you should get:
 
 ## Summary
 
-Creating an application is easy but important step for developers. After creating an application you should be able to get maximum value out of Platform of Trust APIs. E.g. you can start working with `Data Broker` and create `Data Products`. You can also create `Authorization flow` for your application. It allows your users to access Platform of Trust APIs. Read more in `Integrate OAuth 2.0 to access Platform of Trust APIs` guide.
+Creating an application is easy but important step for developers. After creating an application you should be able to get maximum value out of Platform of Trust APIs. E.g. you can start working with `Data Broker` and create `Data Products`. You can also create `Authorization flow` for your application. It allows your users to access Platform of Trust APIs. Read more in [Integrate OAuth 2.0 to access Platform of Trust APIs](./guides/create-application) guide.
+
+
+For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust Application API Documentation](https://docs.oftrust.net/#application-api).
+

@@ -7,7 +7,9 @@ type: "page"
 
 ## Introduction 
 
-This guide is meant for developers who is familiar with Platform of Trust and its main concepts such as: `Identities`, `Auhtorization token` and `Data products`. You can read about these topics in our guides as well e.g. `Data product 101` guide.
+This guide is meant for developers who is familiar with Platform of Trust and its main concepts such as: `Identities`, `Auhtorization token` and `Data products`. You can read about these topics in our guides as well e.g. [Data product 101](./guides/data-products) guide.
+
+Overall `consuming Data Products` means simply to request necessary data from 3rd party data providers e.g. sensors, building or IoT devices. 
 
 ## Overview
 
@@ -118,3 +120,4 @@ Response:
 
 As you can see fetching data production is very easy. All you need to know is `application access token`, `product ID` and `parameters` .
 
+For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust Broker API Documentation](https://docs.oftrust.net/#broker-api).

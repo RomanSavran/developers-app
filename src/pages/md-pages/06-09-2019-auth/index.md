@@ -7,7 +7,7 @@ type: "page"
 
 ## Introduction 
 
-Using `OAuth 2.0` to access Platform of Trust. This guide is meant for developers who want to provide access to Platform of Trust APIs by implementing proper `authorization flow` for their users. In this guide you will find information on how to build basic `authorization flow`.  
+Using `OAuth 2.0` to access Platform of Trust. This guide is meant for developers who want to provide access to Platform of Trust APIs by implementing proper `authorization flow` for their users. In this guide you will find information on how to build basic `authorization flow`. 
 
 ## Overview
 
@@ -19,7 +19,7 @@ Using `OAuth 2.0` to access Platform of Trust. This guide is meant for developer
 
 ## Get OAuth credentials
 
-First of all developers must make sure they have `OAuth credentials` that will be pass to `authorization server`. To obtain `OAuth credentials` you have to create `OAuth client` or register an application. We have described it in `Register an application` guide. As a result you must have at least following data:
+First of all developers must make sure they have `OAuth credentials` that will be pass to `authorization server`. To obtain `OAuth credentials` you have to create `OAuth client` or register an application. We have described it in [Register an application](./guides/create-application) guide. As a result you must have at least following data:
 
 ```
 Client ID: cc4a3f95-ad8b-4048-842e-71d6ea810bc9
@@ -35,7 +35,7 @@ This `OAuth 2.0 credentials` is required to start implementing `authorization fl
  
 ## Implement authorization process.
 
-Usually developers set up a backend application to communicate with `Authorization` server. In Platform of Trust, your application will be sending requests to `Login poral`. The portal will take of some other parts of `authorization flow`. In your application you should have 2 necessary endpoints: `login` and `exchangeToken`.
+Usually developers set up a backend application to communicate with `Authorization` server. In Platform of Trust, your application will be sending requests to `Login portal`. The portal will take care of some specific parts of `authorization flow`. In your application you should have 2 necessary endpoints: `login` and `exchangeToken`.
 
 ```
 # Routes and API endpoints
@@ -62,7 +62,7 @@ Required parameters are:
 
 Optional parameter:
 
-`state` - even though `state` is optional, it is recommended to generate one each request. Enforce `state` validation during `/exchangeToken` to add additional security layer. [Read more](https://auth0.com/docs/protocols/oauth2/oauth-state) about `state`. 
+`state` - even though `state` is optional, it is recommended to generate one for each request. Enforce `state` validation during `/exchangeToken` to add additional security layer. [Read more](https://auth0.com/docs/protocols/oauth2/oauth-state) about `state`. 
 
 Example: 
 
@@ -174,3 +174,5 @@ my_app.redirect(foo_bar_host)
 ## Summary
 
 This guide contains bare minimum about how to get access to Platform of Trust APIs via OAuth 2.0. 
+
+For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust API Documentation](https://docs.oftrust.net/#platform-of-trust-api-documentation).
