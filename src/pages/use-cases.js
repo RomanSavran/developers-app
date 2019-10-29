@@ -3,7 +3,9 @@ import Link from 'gatsby-link';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 
-export default function UseCases({ data }) {
+import PropTypes from 'prop-types';
+
+const UseCases = ({ data }) => {
     const { edges: posts } = data.allMarkdownRemark;
     return (
         <Layout>
@@ -41,7 +43,8 @@ export default function UseCases({ data }) {
             </main>
         </Layout>
     );
-}
+};
+
 export const pageQuery = graphql`
     query UseCasesQuery {
         allMarkdownRemark(
@@ -64,3 +67,13 @@ export const pageQuery = graphql`
         }
     }
 `;
+
+UseCases.propTypes = {
+    data: PropTypes.shape({
+        allMarkdownRemark: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired
+    }).isRequired
+};
+
+export default UseCases;

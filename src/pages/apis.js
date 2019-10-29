@@ -1,14 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import PropTypes from 'prop-types';
+
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const ApisPage = ({ data }) => {
-    console.log(data);
     return (
         <Layout>
-            <SEO title="API's" keywords={[`Platform of Trust`, `APIs`]} />
+            <SEO title="API's" keywords={['Platform of Trust', 'APIs']} />
             <section className="APIs page-content">
                 <main className="container">
                     <section className="intro container">
@@ -140,5 +141,19 @@ export const query = graphql`
         }
     }
 `;
+
+ApisPage.propTypes = {
+    data: PropTypes.shape({
+        intro: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired,
+        ApiDescs: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired,
+        libraries: PropTypes.shape({
+            edges: PropTypes.array.isRequired
+        }).isRequired
+    }).isRequired
+};
 
 export default ApisPage;

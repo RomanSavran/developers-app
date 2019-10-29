@@ -4,6 +4,11 @@ module.exports = {
         'es6': true,
         'jest': true
     },
+    "globals": {
+        "module": "readonly",
+        "__dirname": "readonly",
+        "exports": "readonly"
+    },
     'extends': ['eslint:recommended', 'plugin:react/recommended'],
     'settings': {
         'react': {
@@ -26,17 +31,13 @@ module.exports = {
         'react'
     ],
     'rules': {
+        // Disable this rule because prettier will cover it
+        'indent': 'off',
+        'prefer-arrow-callback': ['error'],
+        'func-style': ['error', 'expression', { allowArrowFunctions: true }],
         'space-infix-ops': ['error'],
         'key-spacing': ['error'],
         'react/jsx-indent': ['error', 4],
-        'indent': [
-            'error',
-            4,
-            {
-                'SwitchCase': 1,
-                'ignoredNodes': ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild']
-            }
-        ],
         'linebreak-style': [
             'error',
             'unix'

@@ -1,17 +1,18 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
-import SEO from '../components/seo';
+import PropTypes from 'prop-types';
 
+import SEO from '../components/seo';
 import Layout from '../components/layout';
 
-export default function Template({ data }) {
+const Template = ({ data }) => {
     const post = data.markdownRemark;
     return (
         <Layout>
             <SEO
                 title={`${post.frontmatter.title}`}
-                keywords={[`Platform of trust`, `developers`, 'use-cases']}
+                keywords={['Platform of trust', 'developers', 'use-cases']}
             />
             <article className="usecase-container">
                 <div className="usecase">
@@ -29,7 +30,7 @@ export default function Template({ data }) {
             </article>
         </Layout>
     );
-}
+};
 
 export const pageQuery = graphql`
     query usecaseByPath($path: String!) {
@@ -53,3 +54,21 @@ export const pageQuery = graphql`
         }
     }
 `;
+
+Template.propTypes = {
+    data: PropTypes.shape({
+        markdownRemark: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+                title: PropTypes.string.isRequired,
+                image: PropTypes.shape({
+                    childImageSharp: PropTypes.shape({
+                        fluid: PropTypes.object
+                    })
+                })
+            }).isRequired,
+            html: PropTypes.string
+        }).isRequired
+    }).isRequired
+};
+
+export default Template;

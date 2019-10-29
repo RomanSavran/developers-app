@@ -7,14 +7,14 @@ import SEO from '../components/seo';
 import EndToEnd from '../images/end-to-end-dx.png';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/global.css';
+import '../styles/global.scss';
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
     return (
         <Layout>
             <SEO
                 title="Developer Portal"
-                keywords={[`Platform of trust`, `developers`]}
+                keywords={['Platform of trust', 'developers']}
             />
             <section className="Home page-content">
                 <main className="main container">
@@ -56,8 +56,8 @@ const IndexPage = ({ data }) => {
                                 alt="End-to-end user experience illustration"
                             />
                             <p>
-                                From below you'll find getting started guides
-                                for the processes.{' '}
+                                {`From below you'll find getting started guides
+                                for the processes.`}
                             </p>
                         </div>
                     </section>
@@ -284,7 +284,7 @@ const IndexPage = ({ data }) => {
                                 Our daily communication is based on Slack and
                                 mailing list. Subscribe now and stay informed!
                             </p>
-                            <a href="https://www.platformoftrust.net/set-subscription">
+                            <a href="https://www.platformoftrust.net/newsletter/">
                                 Subscribe{' '}
                             </a>
                         </div>
@@ -294,5 +294,7 @@ const IndexPage = ({ data }) => {
         </Layout>
     );
 };
+
+IndexPage.propTypes = {};
 
 export default IndexPage;

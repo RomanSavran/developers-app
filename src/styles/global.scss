@@ -1,0 +1,325 @@
+@import "layout.scss";
+@import "media-queries.scss";
+@import "blog.scss";
+@import "page-content.scss";
+@import "footer.scss";
+@import "card.scss";
+@import "nav.scss";
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~react-elements-of-trust/dist/scss/main.scss';
+
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    overflow-y: scroll;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #a897fe;
+    background-image: url("./platformoftrust-bgtesti-v2-2019-03-21.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f0f0f0;
+    font-family: 'Fira Sans', sans-serif;
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    line-height: 1.125em;
+    word-wrap: break-word;
+}
+
+/* TODO: Get rid of #__gatsby */
+#___gatsby {
+    pre,
+    code {
+        background: #333;
+        color: #fff;
+    }
+
+    .jumbotron {
+        padding: 8rem 0;
+        background-color: rgba(121, 85, 255, 0.4) !important;
+    }
+
+    .btn-primary,
+    [class$=primary] {
+        border-color: #583eb9 !important;
+        background-color: #372873 !important;
+        color: #f0f0f0;
+    }
+
+    .btn-primary:hover,
+    [class$=primary]:hover {
+        border-color: #583eb9 !important;
+        background-color: #583eb9 !important;
+    }
+
+    .btn-primary:focus,
+    [class$=primary]:focus {
+        border-color: #583eb9 !important;
+        background-color: #583eb9 !important;
+        box-shadow: 0 0 0 0.2rem #372873 !important;
+    }
+
+    .btn-primary:active,
+    [class$=primary]:active {
+        box-shadow: 0 0 0 0.2rem #372873 !important;
+    }
+
+    code {
+        display: inline-block;
+        padding: 0.2em 0.4em;
+        margin: 0 0.4em;
+        background: transparent;
+        color: #fff;
+        font-family: 'Fira Mono', Courier, monospace;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        line-height: 1.9em;
+
+        span {
+            background: transparent;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 400;
+        }
+    }
+
+    pre {
+        color: #fff;
+    }
+
+    header {
+        width: auto;
+        max-width: 960px;
+        padding: 2rem;
+        margin: 0 auto;
+        background: transparent;
+    }
+
+    a {
+        font-size: inherit;
+    }
+
+    p,
+    a,
+    h1 a,
+    h1,
+    h2,
+    h3 a,
+    h3,
+    h4 a,
+    h4,
+    h5 a,
+    h5,
+    h6 a,
+    h6 {
+        margin-bottom: 0.5em;
+    }
+
+    h3 a,
+    h3,
+    h4 a,
+    h4,
+    h5 a,
+    h5,
+    h6 a,
+    h6 {
+        margin-top: 0.5em;
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 22.6px;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    h1 a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.05em;
+    }
+
+    p,
+    label,
+    input,
+    button {
+        color: #141414;
+        font-size: 27px;
+        font-weight: 400;
+        line-height: 1.125em;
+    }
+
+    li {
+        color: #141414;
+        font-size: 27px;
+        font-weight: 400;
+        line-height: 1.125em;
+    }
+
+    h1 {
+        margin-top: 1.2em;
+        margin-bottom: 10px;
+        font-size: 63px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 1.125em;
+    }
+
+    h2 {
+        margin-top: 1em;
+        font-size: 48px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: 1.125em;
+    }
+
+    h3 {
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        line-height: 1.125em;
+    }
+
+    h4 {
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        line-height: 1.125em;
+    }
+
+    h5 {
+        font-size: 27px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        line-height: 1.125em;
+    }
+
+    h6 {
+        font-size: 24px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        line-height: 1.125em;
+    }
+
+    .post-meta {
+        margin-bottom: 1em;
+        color: #7955ff;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1em;
+    }
+
+    .logo {
+        display: inline-block;
+        width: 25%;
+        margin: auto;
+        vertical-align: middle;
+    }
+
+    .logo__header {
+        width: 15rem;
+        margin-bottom: 0;
+    }
+
+    .menu-footer {
+        flex: 1;
+        order: 5;
+        background-color: #372873;
+
+        h5 {
+            color: #fff;
+        }
+
+        .footer-somelinks img.some-icon {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .button,
+    .btn {
+        padding: 0.6em 1.4em;
+        margin: 0 1em 1em 0;
+        border-radius: 1em;
+    }
+
+    .nav-link__btn {
+        color: #fff;
+    }
+
+    .form-group.input-submit label {
+        display: block;
+    }
+
+    .form-group.input-submit input {
+        display: inline-block;
+        width: 66%;
+        vertical-align: baseline;
+    }
+
+    .form-group.input-submit button {
+        display: inline-block;
+        width: 33%;
+        padding: 0.4em 1em;
+        margin: 0;
+        border-radius: 0 2em 2em 0;
+        vertical-align: baseline;
+    }
+
+    .form-group.input-submit small.form-text {
+        margin-top: 1em;
+    }
+
+    .btn-clipboard {
+        position: absolute;
+        z-index: 10;
+        top: 0.5rem;
+        right: 1rem;
+        display: block;
+        padding: 0.25rem 0.5rem;
+        border: 0;
+        background-color: transparent;
+        border-radius: 0.25rem;
+        color: #eee;
+        cursor: pointer;
+        font-size: 75%;
+    }
+
+    a:link {
+        color: #fff;
+        text-decoration: underline dotted;
+    }
+
+    a:visited {
+        color: #f5f5f5;
+        text-decoration: underline dotted;
+    }
+
+    a:hover {
+        color: #d8d8d8;
+    }
+
+    a:active {
+        color: #c0c0c0;
+    }
+
+    .btn a,
+    .button a,
+    button.btn a {
+        text-decoration: none;
+    }
+}
