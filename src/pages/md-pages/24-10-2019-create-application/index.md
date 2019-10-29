@@ -161,5 +161,5 @@ As a result you should get:
 Creating an application is easy but important step for developers. After creating an application you should be able to get maximum value out of Platform of Trust APIs. E.g. you can start working with `Data Broker` and create `Data Products`. You can also create `Authorization flow` for your application. It allows your users to access Platform of Trust APIs. Read more in [Integrate OAuth 2.0 to access Platform of Trust APIs](/guides/create-application) guide.
 
 
-For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust Application API Documentation](https://docs.oftrust.net/#application-api).
+For detailed documentations on Platform of Trust core APIs, Visit [Platform of Trust API Documentation](https://docs.oftrust.net/#platform-of-trust-api-documentation).
 
