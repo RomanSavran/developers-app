@@ -98,7 +98,7 @@ This user request due to redirection from `Login portal` to your `redirect_uri`,
 
 Optional:
 
-`state` - Should be validated. Parameter generated during /login request, optional but recommned to protect against CSRF. 
+`state` - Should be validated. Parameter generated during /login request, optional but recommended to protect against CSRF. 
 
 Example:
 ```
@@ -111,7 +111,7 @@ But it is not there yet, we still need to provide additional data to `Authorizat
 client_secret # OAuth application's secret you recieved in step 1
 client_id # OAuth application's id you recieved in step 1 or client_id from initial user exchangeToken request
 redirect_uri # redirect uri to validate, must be the same as provided previously in `/login`  
-grant_type # Must be "exchange_token"
+grant_type # Must be "authorization_code"
 code # from initial user exchangeToken request 
 state # from initial user exchangeToken request
 ```
