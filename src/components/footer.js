@@ -30,7 +30,7 @@ const Footer = () => (
                         </a>
                     </p>
                     <p>
-                        <Link className="nav-link" to="/tietosuojaseloste">
+                        <Link className="nav-link" to="/privacypolicy">
                             Tietosuojaseloste
                         </Link>
                     </p>
