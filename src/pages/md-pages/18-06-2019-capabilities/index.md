@@ -6,9 +6,9 @@ type: "page"
 ---
 
 
-# Capabilities
+# Platform of Trust Capabilities
 
-This page iterates the current technical capabilities of the Platform of Trust. 
+This guide iterates the current technical capabilities of the Platform of Trust. Capabilities evolve and expand iteratively and best option to stay tuned is to subscribe to our mailing list. Expanding set of professional level easy to use tools contain all needed to integrate data sources to the platform, build data products and applications. 
 
 ## Data integration tools
 
@@ -24,7 +24,7 @@ Harmonised data models and digital twin models require shared common vocabulary 
 
 ## Tools to build apps on top of live data products
 
-* Discover data products from digital twins
+ Discover data products from digital twins
 
 ## Sandbox for learning and experimenting
 
