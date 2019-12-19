@@ -8,14 +8,14 @@ This guide will help you to understand data models used in the Platform of Trust
 
 ## Purpose and benefits
 Unification of data models enables easy integration without need to build connectors for each specific case. 
-Platform of Trust data models are available in machine readable [JSON-LD](https://json-ld.org/) encoding and utilizes [RDF](https://www.w3.org/RDF/) standard. Other encodings might be available at later stages. Data model can be easily extended by third parties.
+Platform of Trust data models are available in machine readable [JSON-LD](https://json-ld.org/) encoding and utilizes [RDF](https://www.w3.org/RDF/) and [OWL](https://www.w3.org/OWL/) standards. Other encodings might be available at later stages. Data model can be easily extended by third parties, exact process is specified later in this guide.
 
 ## Data example
-Each data file of identity should reference context file. All properties excluding `name` should be nested under `data` object. Here is example of Building
+Each data file of identity should reference context file. All properties excluding *name* should be nested under *data* object. Here is example of Building
 
 ```JSON
 {
-    "@context": "https://platformoftrust.github.io/standards/contexts/identity-building.jsonld",
+    "@context": "https://standards.oftrust.net/v1/Context/Identity/",
     "@id": "<identity id>",
     "@type": "Building",
     "name": "Huomenta",
@@ -28,7 +28,7 @@ Each data file of identity should reference context file. All properties excludi
 }
 ```
 
-In this example `@context` defines reference to Context file where definition of JSON sctructure is located. In this definition there is a reference to Ontology file with term definitions. [JSON-LD playground](https://json-ld.org/playground/) can be used to extract machine readable definition of data. Just copypaste above example there to receive terms links.
+In this example *@context* defines reference to Context file where definition of JSON sctructure is located. In this definition there is a reference to Ontology file with term definitions. [JSON-LD playground](https://json-ld.org/playground/) can be used to extract machine readable definition of data. Just copypaste above example there to receive terms links.
 
 Please reference sections below to get more information about Ontology and Context terms
 
@@ -42,22 +42,24 @@ We also have a set of properties:
 
 The decision to allow multiple domains and ranges was purely pragmatic. While the computational properties of systems with a single domain and range are easier to understand, in practice, this forces the creation of a lot of artifical classes, which are there purely to act as the domain/range of some properties.
 
-All classes and properties can be investigated in [Data Model structure documentation](https://platformoftrust.github.io/standards/).
+All classes and properties can be investigated in [Data Model structure documentation](https://standards.oftrust.net/v1/).
 
 ## Data model source code
 Data model source code is organized in following way:
-* Core ontology file is named `pot.jsonld` and is located under `ontologies` folder. It contains all classes and properties used in ontology
-* Context files are located in `contexts` folder and contains one file per identity. This file describes JSON document sctructure of specific identity.
-* Vocab files are located in `vocabularies` folder and describes properties metadata like labels on forms and requirements
+* Core ontology file is named *pot.jsonld* and is located under *ontologies* folder. It contains all classes and properties used in ontology
+* Context files are located in *contexts* folder and contains one file per identity. This file describes JSON document sctructure of specific identity.
+* Vocab files are located in *vocabularies* folder and describes properties metadata like labels on forms and requirements
 
 Core ontology should be understood as core terms vocabulary including all classes and properties. Context files define JSON document strcuture and are connected to ontology. Vocab files should be used to build UI and other application level represetations of data structure and also to understand some technical level properties of attributes.
 
-All JSON-LD source files are available under [GitHub Repository](https://github.com/PlatformOfTrust/standards).
+If you want to extend ontology, please read this [Ontology extension guide](/guides/data-models-extension)
 
 ## Links and additional information
-All classes and properties can be investigated in [Data Model structure documentation](https://platformoftrust.github.io/standards/).
+All classes and properties can be investigated in [Data Model structure documentation](https://standards.oftrust.net/v1/).
 
 All JSON-LD source files are available under [GitHub Repository](https://github.com/PlatformOfTrust/standards).
+
+If you want to add your classes or properties to ontology use [Ontology extension guide](/guides/data-models-extension)
 
 If you are application developer, it might be a good idea to read [Application Development Guide](/guides/build-apps) first. 
 
