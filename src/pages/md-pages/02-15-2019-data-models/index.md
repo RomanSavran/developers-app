@@ -8,10 +8,10 @@ This guide will help you to understand data models used in the Platform of Trust
 
 ## Purpose and benefits
 Unification of data models enables easy integration without need to build connectors for each specific case. 
-Platform of Trust data models are available in machine readable [JSON-LD](https://json-ld.org/) encoding and utilizes [RDF](https://www.w3.org/RDF/) and [OWL](https://www.w3.org/OWL/) standards. Other encodings might be available at later stages. Data model can be easily extended by third parties, exact process is specified later in this guide.
+Platform of Trust data models are available in machine readable [JSON-LD](https://json-ld.org/) encoding and utilizes [RDF](https://www.w3.org/RDF/) and [OWL](https://www.w3.org/OWL/) standards. Other encodings might be available at later stages. Data model can be easily extended by third parties. Exact process is specified in [Ontology extension guide](/guides/data-models-extension).
 
 ## Data example
-Each data file of identity should reference context file. All properties excluding *name* should be nested under *data* object. Here is example of Building
+Each data file of identity should reference its associated context file. All properties excluding *name* should be nested under *data* object. Here is example of *Building*
 
 ```JSON
 {
@@ -65,6 +65,4 @@ If you are application developer, it might be a good idea to read [Application D
 
 If you are integrating data and creating data products, take a look at the [Data Product Guide](/guides/data-products). 
 
-Digital Twins are fundamental features of the platform, take a look at the [Digital Twin Guide](/guides/twins).
-
-Open sandbox is your friend! Isolated environment for testing applications and data product integrations, read more from [Sandbox Guide](/developers/guides/sandbox).
+Open sandbox is your friend! Isolated environment for testing applications and data product integrations, read more from [Sandbox Guide](/guides/sandbox).

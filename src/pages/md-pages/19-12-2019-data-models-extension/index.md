@@ -14,7 +14,7 @@ The aim of this guide is to describe how Platform of Trust customers and other i
 ### DOs
 - Make increments. You can add new subclasses under the current classes. You can also add new properties.
 - For classes, use pascal case naming convention. For example, PascalCase.
-- For properties, use camel case naming convention. For example, camelCase
+- For properties, use camel case naming convention. For example, camelCase.
 - Add missing annotations and refine existing ones.
 - Be logical and semantically consistent.
 
@@ -24,26 +24,24 @@ The aim of this guide is to describe how Platform of Trust customers and other i
 - Do not change the types of relations between the current classes. You are allowed to change only the relation types of the classes you have added.
 
 ## Editing process
-1. Download the latest Platform of Trust ontology
+1. *Download the latest Platform of Trust ontology*
 
 It can be downloaded from [GitHub repository](https://github.com/PlatformOfTrust/standards). It is located under path */{Version}/Ontology/pot.jsonld*. Where *{Version}* is required version, for ex. *v1*.
-Since Protégé requires *Expanded JSON-LD* form, you need to expand it using [JSON-LD Playground](https://json-ld.org/playground/) tool. Just copy-paste file content in tool and save *Expanded* form for future editing in Protégé
+Since Protégé requires *Expanded JSON-LD* form, you need to expand it using [JSON-LD Playground](https://json-ld.org/playground/) tool. Just copy-paste file content in tool and save *Expanded* form for future editing in Protégé.
 
-2. Download and install Protégé ontology editor. 
+2. *Download and install Protégé ontology editor*
 
-Before downloading the tool, users must register here: http://www.smi.stanford.edu/projects/protege/download/register.html
-Protégé Ontology Editor can be downloaded from here: http://www.smi.stanford.edu/projects/protege/download/registered.html
-Installation instructions for different operation systems can be found here: http://protegeproject.github.io/protege/installation/
+*Installation instructions* for different operation systems can be found [here](http://protegeproject.github.io/protege/installation/).
 
-3. Edit the ontology according to Platform of Trust Guidelines
+3. *Edit the ontology according to Platform of Trust Guidelines*
 
-Open the file on Protégé. Mac OSX users will have to change the ontology file ending from .jsonld to .owl.
-Once you have opened the ontology file with the editor you are able to edit it. You should have at least basic knowledge about ontologies and OWL before starting the work. Please reffer [The W3C Web Ontology Language](https://www.w3.org/TR/owl-guide/) and [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf). Also follow the guidelines specified in this document
+Open the file on Protégé. macOS users will have to change the ontology file ending from .jsonld to .owl.
+Once you have opened the ontology file with the editor you are able to edit it. You should have at least basic knowledge about ontologies and OWL before starting the work. Please reffer [The W3C Web Ontology Language](https://www.w3.org/TR/owl-guide/) and [Ontology Development 101](https://protege.stanford.edu/publications/ontology_development/ontology101.pdf). Also follow the guidelines specified in this document/
 
-4. Save the file and push it as PR in GitHub.
-	- Make fork of [GitHub Repository](https://github.com/PlatformOfTrust/standards)
-	- Save the edited file in JSON-LD format with following naming schema: pot_<your comapany's name>_20yy-mm-dd.jsonld
-	- Add your file to *Suggestions* folder under *{Verson}* folder (ex. *v1*) in GitHub repository. Fell free to add *Suggestions* folder if it is missing. For example, a person working for YIT saving the file on April 20th names the file as pot_YIT_2020-04-20.jsonld
+4. *Save the file and push it as PR in GitHub*
+	- Make fork of [GitHub Repository](https://github.com/PlatformOfTrust/standards).
+	- Save the edited file in JSON-LD format with following naming schema: pot_<your comapany's name>_20yy-mm-dd.jsonld.
+	- Add your file to *Suggestions* folder under *{Verson}* folder (ex. *v1*) in GitHub repository. Fell free to add *Suggestions* folder if it is missing. For example, a person working for YIT saving the file on April 20th names the file as *v1\Suggestions\pot_YIT_2020-04-20.jsonld*.
 	- Once the file is saved you can deliver it back to Platform of Trust for testing, validation and implementation by creating PR request from your fork repository.
 
 ## Links and additional information
@@ -57,6 +55,4 @@ If you are application developer, it might be a good idea to read [Application D
 
 If you are integrating data and creating data products, take a look at the [Data Product Guide](/guides/data-products). 
 
-Digital Twins are fundamental features of the platform, take a look at the [Digital Twin Guide](/guides/twins).
-
-Open sandbox is your friend! Isolated environment for testing applications and data product integrations, read more from [Sandbox Guide](/developers/guides/sandbox).
+Open sandbox is your friend! Isolated environment for testing applications and data product integrations, read more from [Sandbox Guide](/guides/sandbox).
